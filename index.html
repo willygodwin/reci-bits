@@ -1,11 +1,155 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+        *{
+        padding:auto;
+        margin:auto;
+        text-align:center;
+        }
+        </style>
+  </head>
+
+  <body>
+
     
-</body>
+
+    <div class="bodyContainer"> 
+
+    <!-- Nav bar-->
+
+
+    <nav class="light-blue lighten-1" role="navigation">
+      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">RECI-BITS</a>
+      <!--
+           <ul class="right hide-on-med-and-down">
+          <li><a href="#">Navbar Link</a></li>
+        </ul>
+  
+      --> 
+        <ul id="nav-mobile" class="sidenav">
+          <li><a href="#">Navbar Link</a></li>
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      </div>
+    </nav>
+
+    <!-- Nav bar end-->
+
+    <!-- Search bar/ input start-->
+
+
+    <div class="row">
+        <form class="col s6 m5">
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="textarea1" class="materialize-textarea"></textarea>
+              <label for="textarea1">Search AREA</label>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    <!-- Search bar end -->
+  
+  
+    <div class="container">
+      <div class="section">
+
+
+        <!--Cart list plus button -->
+
+        <div class="row">
+            <div class="col s12 m5">
+              <div class="card-panel teal">
+                <span class="white-text">Ingridient list goes here
+                </span>
+
+                <br>
+                <a class="waves-effect waves-light btn-large">Generate</a>
+                <br>
+              </div>
+              </div>
+              </div>
+             
+              </div>
+            </div>
+          </div>
+
+          <!-- Cart list end -->
+
+          <!-- Card if ingridients has been generated-->
+
+          <div class="container">
+            <div class="section">
+      
+              <div class="row">
+                  <div class="col s12 m5">
+                    <div class="card-panel teal">
+                      <span class="white-text">Recipe list goes here
+                      </span>
+      
+                      
+                    </div>
+                    </div>
+                   
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Generated end-->
+
+                <!--Modal start-->
+
+                 
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+   <!-- Modal Structure -->
+   <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Tutorialsplane.com</h4>
+      <p>Learn more @ tutorialsplane.com!</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+
+                <!-- Modal end-->
+  
+       
+    
+  
+  
+  
+    <!--JavaScript at end of body for optimized loading-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+
+    <!-- Modal Trigger -->
+
+
+    <script type="text/javaScript">
+    
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, {});
+  });
+
+
+      // $(document).ready(function(){
+      //   $('.modal').modal();
+      // });
+          
+    </script>
+
+    <!-- Modal trigger end -->
+  </body>
 </html>
