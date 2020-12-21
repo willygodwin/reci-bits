@@ -5,6 +5,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="getrecipe.css">
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -69,11 +70,14 @@
         <div class="row">
             <div class="col s12 m5">
               <div class="card-panel teal">
-                <span class="white-text">Ingridient list goes here
-                </span>
-
+                <span class="white-text">Ingredient list goes here</span>
                 <br>
-                <a class="waves-effect waves-light btn-large">Generate</a>
+                <ul>
+                  <li class="ingredient-list">Pork</li>
+                  <li class="ingredient-list">Rice</li>
+                  <li class="ingredient-list">Soy Sauce</li>
+                </ul>
+                <a class="waves-effect waves-light btn-large" id="get-recipe-button">Generate</a>
                 <br>
               </div>
               </div>
@@ -88,21 +92,28 @@
           <!-- Card if ingridients has been generated-->
 
           <div class="container">
-            <div class="section">
-      
-              <div class="row">
-                  <div class="col s12 m5">
-                    <div class="card-panel teal">
-                      <span class="white-text">Recipe list goes here
-                      </span>
-      
-                      
-                    </div>
-                    </div>
-                   
-                    </div>
+            
+            <div class="row" id="recipes-list">
+
+              <!-- <div class="col s12 m6 l4 xl3">
+                <div class="card">
+                  <div class="card-image">
+                    <img src="images/sample-1.jpg">
+                    <span class="card-title">Card Title</span>
+                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                  </div>
+                  <div class="card-content">
+                    <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
                   </div>
                 </div>
+              </div>   -->
+
+
+            <!-- </div> -->
+  
+          </div>
+
+                
 
                 <!-- Generated end-->
 
@@ -131,7 +142,7 @@
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    
+    <script src="getrecipe.js"></script>
 
     <!-- Modal Trigger -->
 

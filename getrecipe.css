@@ -1,0 +1,54 @@
+html,body {
+    margin:0;
+    padding:0;
+    overflow-x:hidden;
+}
+
+/* .card{
+    height: 450px;
+} */
+
+span#card-title{
+    font-size: 1.2rem;
+    line-height: normal;
+    font-weight: 600;
+}
+
+p.card-text{
+    font-size: 1rem;
+    line-height: normal;
+    font-weight: 400;
+}
+
+.btn-floating i{
+    z-index: 1;  
+}
+
+.card.small{
+    border-radius: 1rem;
+}
+
+.card-image{
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    
+}
+.card:hover{
+    cursor: pointer;
+    box-shadow: 0 0 20px rgb(75, 75, 75);
+}
+.container {
+    margin: 0 auto;
+    max-width: 90%;
+    width: 90%;
+  }
+  @media only screen and (min-width: 601px) {
+    .container {
+      width: 90%;
+    }
+  }
+  @media only screen and (min-width: 993px) {
+    .container {
+      width: 90%;
+    }
+  }
