@@ -29,7 +29,7 @@ function searchRecipes (){
             let recipesList = $('#recipes-list');
             let divOne      = $('<div>').attr({'class':'col s12 m6 l4 xl3',});
                 recipesList.append(divOne)
-            let divTwo      = ($('<div>').attr({'class':'card small','data-url': `${response.hits[i].recipe.url}`}));
+            let divTwo      = ($('<div>').attr({'class':'card small modal-trigger','href':'#modal1','data-url': `${response.hits[i].recipe.url}`}));
                 divOne.append(divTwo);
             let divThree    = ($('<div>').attr({'class':'card-image'}));
                 divTwo.append(divThree);
@@ -44,6 +44,17 @@ function searchRecipes (){
             event.preventDefault();
             console.log(event);
             console.log($(event.currentTarget).attr('data-url'));
+            let sourceURL = $(event.currentTarget).attr('data-url');
+            let SpoonacularURL = "";
+            // $.ajax({
+            //     url : SpoonacularURL, //spoonocular API url goes here
+            //     method : 'GET',
+            // }).then(function(response){
+                // write codes to append data to .modal-content
+            // })
+            $('.modal').modal() //this function will open the modal when click
+            
+    
         })
     })
 }
@@ -53,6 +64,8 @@ $('#get-recipe-button').on('click', function(event){
     console.log(event);
     searchRecipes();
 })
+
+
 
 
 
