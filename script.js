@@ -66,20 +66,30 @@ function populateAbout(recipeObj){
     let modal = $(".modal-content")
     modal.text("");
     //TODO: About modal containing the following
+    //Div to store info 2 cols 
+    let row = $("<div>");
+    row.addClass("row")
     //Photo
     let imageDiv = $("<img>");
+    imageDiv.addClass("recipe-image col s6")
     imageDiv.attr("src", recipeObj.image)
     
+    //div for the below
+    let infoDiv = $("<div>");
+    infoDiv.addClass("info-div-parent col s6")
     //Serves 
     let servesDiv = $("<div>");
+    servesDiv.addClass("info-div");
     servesDiv.text("Serves: " + recipeObj.yield);
 
     //Cooking Time
     let cookingTimeDiv = $("<div>");
+    cookingTimeDiv.addClass("info-div");
     cookingTimeDiv.text("Cooking Time: " + recipeObj.totalTime + " minutes");
 
     //Ingredient List 
     let ingredientsDiv = $("<ul>");
+    ingredientsDiv.addClass("info-div");
     let item;
     for (let i = 0 ; i < recipeObj.ingredientLines.length ; i ++) {
         item = $("<li>");
@@ -88,15 +98,20 @@ function populateAbout(recipeObj){
     }
 
     //Link to recipe method
-    let recipeURL = $("<div>");
-    recipeURL.text("Link to recipe: " + recipeObj.url)
+    let recipeURL = $("<a>");
+    recipeURL.addClass("info-div");
+
+    recipeURL.attr("href",  recipeObj.url)
+    recipeURL.text("Link to recipe:")
 
     //Append all of the above
-    modal.append(imageDiv);
-    modal.append(servesDiv);
-    modal.append(cookingTimeDiv);
-    modal.append(ingredientsDiv);
-    modal.append(recipeURL);
+    infoDiv.append(servesDiv);
+    infoDiv.append(cookingTimeDiv);
+    infoDiv.append(ingredientsDiv);
+    infoDiv.append(recipeURL);
+    row.append(imageDiv)
+    row.append(infoDiv);
+    modal.append(row);
 }
 
 function populateMethod(recipeObj) {
@@ -143,24 +158,175 @@ function populateNutInfo(recipeObj){
 
     //Creating the table body items
     let tableBody = $("<tbody>");
+    
     //Energy
-    // let energyRow = 
+    let energyRow = $("<tr>");
 
+    let energy = $("<td>");
+    energy.text("Energy:")
 
+    let energyTN = $("<td>");
+    energyTN.text(Math.round(recipeObj.totalNutrients.ENERC_KCAL.quantity) + " " + recipeObj.totalNutrients.ENERC_KCAL.unit)
+
+    let energyPS = $("<td>");
+    let energyPSval = Math.round(recipeObj.totalNutrients.ENERC_KCAL.quantity/recipeObj.yield);
+    energyPS.text(energyPSval + " " + recipeObj.totalNutrients.ENERC_KCAL.unit);
+
+    let energyDP = $("<td>");
+    let energyDPval = Math.round(recipeObj.totalDaily.ENERC_KCAL.quantity)
+    energyDP.text(energyDPval + " " + recipeObj.totalDaily.ENERC_KCAL.unit);
+
+    energyRow.append(energy);
+    energyRow.append(energyTN);
+    energyRow.append(energyPS);
+    energyRow.append(energyDP);
     
-    let Energy = $("<li>");
-    Energy.text("Energy: " + recipeObj.totalNutrients.Energy);
-    // recipeObj.totalNutrients
-    
-
-
     //Protein
+    let proteinRow = $("<tr>");
+
+    let protein = $("<td>");
+    protein.text("Protein:")
+
+    let proteinTN = $("<td>");
+    proteinTN.text(Math.round(recipeObj.totalNutrients.PROCNT.quantity) + " " + recipeObj.totalNutrients.PROCNT.unit)
+
+    let proteinPS = $("<td>");
+    let proteinPSval = Math.round(recipeObj.totalNutrients.PROCNT.quantity/recipeObj.yield);
+    proteinPS.text(proteinPSval + " " + recipeObj.totalNutrients.PROCNT.unit);
+
+    let proteinDP = $("<td>");
+    let proteinDPval = Math.round(recipeObj.totalDaily.PROCNT.quantity)
+    proteinDP.text(proteinDPval + " " + recipeObj.totalDaily.PROCNT.unit);
+
+    proteinRow.append(protein);
+    proteinRow.append(proteinTN);
+    proteinRow.append(proteinPS);
+    proteinRow.append(proteinDP);
+
     //Fat (total and saturated)
+    let fatRow = $("<tr>");
+
+    let fat = $("<td>");
+    fat.text("fat:")
+
+    let fatTN = $("<td>");
+    fatTN.text(Math.round(recipeObj.totalNutrients.FAT.quantity) + " " + recipeObj.totalNutrients.FAT.unit)
+
+    let fatPS = $("<td>");
+    let fatPSval = Math.round(recipeObj.totalNutrients.FAT.quantity/recipeObj.yield) ;
+    fatPS.text(fatPSval + " " + recipeObj.totalNutrients.FAT.unit);
+
+    let fatDP = $("<td>");
+    let fatDPval = Math.round(recipeObj.totalDaily.FAT.quantity)
+    fatDP.text(fatDPval + " " + recipeObj.totalDaily.FAT.unit);
+
+    fatRow.append(fat);
+    fatRow.append(fatTN);
+    fatRow.append(fatPS);
+    fatRow.append(fatDP);
+    
     //Carbs 
+    let carbsRow = $("<tr>");
+
+    let carbs = $("<td>");
+    carbs.text("carbs:")
+
+    let carbsTN = $("<td>");
+    carbsTN.text(Math.round(recipeObj.totalNutrients.CHOCDF.quantity) + " " + recipeObj.totalNutrients.CHOCDF.unit)
+
+    let carbsPS = $("<td>");
+    let carbsPSval = Math.round(recipeObj.totalNutrients.CHOCDF.quantity/recipeObj.yield);
+    carbsPS.text(carbsPSval + " " + recipeObj.totalNutrients.CHOCDF.unit);
+
+    let carbsDP = $("<td>");
+    let carbsDPval = Math.round(recipeObj.totalDaily.CHOCDF.quantity)
+    carbsDP.text(carbsDPval + " " + recipeObj.totalDaily.CHOCDF.unit);
+
+    carbsRow.append(carbs);
+    carbsRow.append(carbsTN);
+    carbsRow.append(carbsPS);
+    carbsRow.append(carbsDP);
+    
     // Sugars
+    let sugarRow = $("<tr>");
+
+    let sugar = $("<td>");
+    sugar.text("sugar:")
+
+    let sugarTN = $("<td>");
+    sugarTN.text(Math.round(recipeObj.totalNutrients.SUGAR.quantity) + " " + recipeObj.totalNutrients.SUGAR.unit)
+
+    let sugarPS = $("<td>");
+    let sugarPSval = Math.round(recipeObj.totalNutrients.SUGAR.quantity/recipeObj.yield);
+    sugarPS.text(sugarPSval + " " + recipeObj.totalNutrients.SUGAR.unit);
+
+    let sugarDP = $("<td>");
+    let sugarDPval = 0
+    sugarDP.text(sugarDPval);
+
+    sugarRow.append(sugar);
+    sugarRow.append(sugarTN);
+    sugarRow.append(sugarPS);
+    sugarRow.append(sugarDP);
+    
     //Fibre 
+    let fibreRow = $("<tr>");
+
+    let fibre = $("<td>");
+    fibre.text("fibre:")
+
+    let fibreTN = $("<td>");
+    fibreTN.text(Math.round(recipeObj.totalNutrients.FIBTG.quantity) + " " + recipeObj.totalNutrients.FIBTG.unit)
+
+    let fibrePS = $("<td>");
+    let fibrePSval = Math.round(recipeObj.totalNutrients.FIBTG.quantity/recipeObj.yield);
+    fibrePS.text(fibrePSval + " " + recipeObj.totalNutrients.FIBTG.unit);
+
+    let fibreDP = $("<td>");
+    let fibreDPval = Math.round(recipeObj.totalDaily.FIBTG.quantity)
+    fibreDP.text(fibreDPval + " " + recipeObj.totalDaily.FIBTG.unit);
+
+    fibreRow.append(fibre);
+    fibreRow.append(fibreTN);
+    fibreRow.append(fibrePS);
+    fibreRow.append(fibreDP);
+    
     //Salt/Sodium
+    let saltRow = $("<tr>");
+
+    let salt = $("<td>");
+    salt.text("salt:")
+
+    let saltTN = $("<td>");
+    saltTN.text(Math.round(recipeObj.totalNutrients.NA.quantity) + " " + recipeObj.totalNutrients.NA.unit)
+
+    let saltPS = $("<td>");
+    let saltPSval = Math.round(recipeObj.totalNutrients.NA.quantity/recipeObj.yield);
+    saltPS.text(saltPSval + " " + recipeObj.totalNutrients.NA.unit);
+
+    let saltDP = $("<td>");
+    let saltDPval = Math.round(recipeObj.totalDaily.NA.quantity)
+    saltDP.text(saltDPval + " " + recipeObj.totalDaily.NA.unit);
+
+    saltRow.append(salt);
+    saltRow.append(saltTN);
+    saltRow.append(saltPS);
+    saltRow.append(saltDP);
+
+    //append rows to table body 
+    tableBody.append(energyRow);
+    tableBody.append(proteinRow);
+    tableBody.append(fatRow);
+    tableBody.append(carbsRow);
+    tableBody.append(sugarRow);
+    tableBody.append(fibreRow);
+    tableBody.append(saltRow);
+
+    tableDiv.append(tableBody);
+    modal.append(tableDiv);
 }
+
+
 
 //TODO: Function that uses AJAX to call the recipe API to populate recipe information
 const recipeSearchID = "9afc53dc"
@@ -176,30 +342,31 @@ $.ajax({
 }).then(function(response) {
     console.log(response)
     //Declaring recipe info
-    let recipeName = response.hits[0].recipe.label
-    let ingredients = response.hits[0].recipe.ingredientLines; //Array 
-    let imageSrc = response.hits[0].recipe.image;
-    // let recipeURL = response.hits[0].recipe.url;
-    let recipeCautions = response.hits[0].recipe.cautions;
-    let serves = response.hits[0].recipe.yield
-    let cookingTime = response.hits[0].recipe.totalTime
+    // let recipeName = response.hits[0].recipe.label
+    // let ingredients = response.hits[0].recipe.ingredientLines; //Array 
+    // let imageSrc = response.hits[0].recipe.image;
+    // // let recipeURL = response.hits[0].recipe.url;
+    // let recipeCautions = response.hits[0].recipe.cautions;
+    // let serves = response.hits[0].recipe.yield
+    // let cookingTime = response.hits[0].recipe.totalTime
 
-    console.log(ingredients);
-    console.log(ingredients.length);
-    console.log(imageSrc);
-
-    //Declaring nutritional info
-    let dailyValObj = response.hits[0].recipe.totalDaily;
-    let nutrientObj = response.hits[0].recipe.totalNutrients;
-
-    console.log(nutrientObj);
 
     let recipeURL = "https://api.spoonacular.com/recipes/extract?apiKey=" + spoonacularAPI + "&url=" + getURL(response.hits[0].recipe);
-
+    debugger;
     console.log(recipeURL)
-
     populateModal(response.hits[0].recipe)
     populateAbout(response.hits[0].recipe)
+    
+
+    $(".about-recipe").on("click", function(){
+        populateAbout(response.hits[0].recipe);
+
+    });
+
+    $(".nutInfo-recipe").on("click", function(){
+        populateNutInfo(response.hits[0].recipe);
+
+    });
 
     //AJAX call to the spoonacular API...
     $.ajax({
@@ -209,6 +376,11 @@ $.ajax({
         console.log(response);
 
         populateMethod(response);
+
+        $(".about-recipe").on("click", function(){
+            populateMethod(response);
+    
+        });
 
     });
 
@@ -231,7 +403,6 @@ $.ajax({
 });
 
 
-//TODO: Funciton that uses AJAX to call the nutritional API to populate information
 
-//TODO: Onclick event listener that retrieves the recipe name from the card display
+
 
