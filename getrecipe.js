@@ -5,7 +5,7 @@ const spoonacularAPI = "59b7c5b4387043649860e827d13b1445"
 
 let favouriteRecipes = JSON.parse(localStorage.getItem('favouriteRecipes')) || [];
 
-let myspan=$("#alertspan");
+let myspan=$("#alertspan");// the span where the warning message come if the ingredient or the list is empty
 
 function getIngredientsList(){
     let ingredientsList = $('.ingredient-list');
