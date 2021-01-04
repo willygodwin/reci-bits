@@ -11,134 +11,125 @@
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <style>
-       
-        </style>
   </head>
 
   <body>
-
-    
-
     <div class="bodyContainer"> 
+      <!-- Nav bar-->
+      <nav class="light-blue lighten-1" role="navigation">
+        <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">RECI-BITS</a> 
+          <ul id="nav-mobile" class="left">
+            <li><a id="favourite-recipe-modal-button" class="waves-effect waves-light btn modal-trigger" href="#favourite-recipe-modal"> 
+              Favourite Recipes 
+            </a></li>
+          </ul>
+          <ul id="nav-mobile" class="right">
+            <li><a id="about-modal-button" class="waves-effect waves-light btn modal-trigger" href="#about-modal"> 
+              About Reci-Bits 
+            </a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- Nav bar end-->
 
-    <!-- Nav bar-->
-
-
-    <nav class="light-blue lighten-1" role="navigation">
-      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">RECI-BITS</a>
-      <!--
-           <ul class="right hide-on-med-and-down">
-          <li><a href="#">Navbar Link</a></li>
-        </ul>
-  
-      --> 
-        <ul id="nav-mobile" class="sidenav">
-          <li><a href="#">Navbar Link</a></li>
-        </ul>
-        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      </div>
-    </nav>
-
-    <!-- Nav bar end-->
-
-    <!-- Search bar/ input start-->
-
-
-    <div class="row">
+      <!-- Search bar/ input start-->
+      <div class="row">
         <form class="col s6 m5">
           <div class="row">
             <div class="input-field col s12">
               <textarea id="textarea1" class="materialize-textarea"></textarea>
-              <label for="textarea1">Search AREA</label>
+              <label for="textarea1">What in your fridge?</label>
+              <button id="btnadd" type="button">Add </button>
             </div>
           </div>
         </form>
       </div>
-
-    <!-- Search bar end -->
+      <!-- Search bar end --> 
   
-  
-    <div class="container">
-      <div class="section">
-
-
-        <!--Cart list plus button -->
-
+      <!--Cart list plus button -->
+      <div class="container">
         <div class="row">
-            <div class="col s12 m5">
-              <div class="card-panel teal">
-                <span class="white-text">Ingredient list goes here</span>
-                <br>
-                <ul>
-                  <li class="ingredient-list">Pork</li>
-                  <li class="ingredient-list">Rice</li>
-                  <li class="ingredient-list">Soy Sauce</li>
-                </ul>
-                <a class="waves-effect waves-light btn-large" id="get-recipe-button">Generate</a>
-                <br>
+          <div class="col s12 m5">
+            <div class="card-panel teal">
+              <span class="white-text left">List of Ingredients:</span>
+              <br>
+              <div id="list-of-ingredients">
+                <!-- the ingredient input goes here -->
               </div>
-              </div>
-              </div>
-             
-              </div>
+              <a class="waves-effect waves-light btn-large" id="get-recipe-button">Get Recipes</a>
+              <br>
             </div>
           </div>
+        </div>    
+      </div>
+      <!-- Cart list end -->
 
-          <!-- Cart list end -->
-
-          <!-- Card if ingridients has been generated-->
-
-          <div class="container">
-            
-            <div class="row" id="recipes-list">
-
-              <!-- <div class="col s12 m6 l4 xl3">
-                <div class="card">
-                  <div class="card-image">
-                    <img src="images/sample-1.jpg">
-                    <span class="card-title">Card Title</span>
-                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                  </div>
-                  <div class="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-                  </div>
-                </div>
-              </div>   -->
-
-
-            <!-- </div> -->
-  
-          </div>
-
-                
-
-                <!-- Generated end-->
-
-                <!--Modal start-->
-
-                 
-  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-
-   <!-- Modal Structure -->
-   <div id="modal1" class="modal">
-    <div class="modal-header">
-        
+      <!-- Card if ingridients has been generated-->
+      <div class="container">
+        <div class="row" id="recipes-list">
+          <!-- list of search recipes will be appended here -->
+        </div>
+      </div>
+      <!-- Card if ingridients has been generated-->
     </div>
-    <div class="modal-content">
-      <h4>Tutorialsplane.com</h4>
-      <p>Learn more @ tutorialsplane.com!</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-    </div>
+                   
+    <!--Modal start-->
 
-                <!-- Modal end-->
-  
-       
-    
-  
-  
+    <!-- Modal for Favourite Recipes -->
+    <div id="favourite-recipe-modal" class="modal">
+      <div class="modal-header" id="about-modal-header">
+          Favourite Recipes
+      </div>
+      <div class="modal-content" id="favourite-recipe-modal-content">
+        <!-- append list of saved recipe here -->
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+      </div>
+    </div>
+    <!-- Modal for Favourite Recipes -->
+
+    <!-- Modal for About Reci-Bits -->
+    <div id="about-modal" class="modal">
+      <div class="modal-header" id="about-modal-header">
+          About Reci-Bits
+      </div>
+      <div class="modal-content" id="about-modal-content">
+        <p>Reci-Bits is a web app to search recipe and nutrition information by using APIs.<br>
+          To use the functionality first you need to type items or ingredients (from your fridge or pantry) one at a time<br>
+          Then when you click on the add button, it will be transferred to another textbox-the searchbox. <br>
+          After this, you need to click on the search button, you will be presented with 12 food (or drink) menu.<br>
+          And when you click on the title or the image of the food (or drink), it will take you to a new page with detail recipe of that item.<br>
+          Thank you for visiting here, and enjoy the food (or drink) <h3>&#128523;</h3> 
+          </p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+      </div>
+    </div>
+    <!-- Modal for About Reci-Bits -->
+
+    <!-- Modal for detail recipe ingredients and instructions -->
+    <div id="modal1" class="modal">
+      <div class="modal-header" id="recipe-modal-header">
+
+      </div>
+      <div class="modal-content" id="recipe-modal-content">
+        <h4>Tutorialsplane.com</h4>
+        <p>Learn more @ tutorialsplane.com!</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+      </div>
+    </div>
+    <!-- Modal for detail recipe ingredients and instructions -->
+
+
+
+
+
+
+
   
     <!--JavaScript at end of body for optimized loading-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -148,23 +139,6 @@
     
     <script src="getrecipe.js"></script>
 
-    <!-- Modal Trigger -->
-
-
-    <!-- <script type="text/javaScript">
     
-  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems, {});
-  });
-
-
-      $(document).ready(function(){
-        $('.modal').modal();
-      });
-          
-    </script> -->
-
-    <!-- Modal trigger end -->
   </body>
 </html>

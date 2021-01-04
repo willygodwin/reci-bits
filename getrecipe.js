@@ -3,14 +3,20 @@ let appKEY = '808b4ecac7df60930d1456576a2afadc';
 let ingredients = "";
 const spoonacularAPI = "59b7c5b4387043649860e827d13b1445"
 
+let favouriteRecipes = JSON.parse(localStorage.getItem('favouriteRecipes')) || [];
+
 function getIngredientsList(){
     let ingredientsList = $('.ingredient-list');
     let ingredientsArray = [];
-    for(let j = 0; j < ingredientsList.length; j++){
-        let text = $(ingredientsList[j]).text();
+    if(ingredientsList.length == 0){
+        alert("please enter at least one ingredient")
+    }else{
+        for(let j = 0; j < ingredientsList.length; j++){
+        let text = ingredientsList[j].childNodes[0].data;
         ingredientsArray.push(text);
-    }
-    ingredients = ingredientsArray.join();
+        }
+        ingredients = ingredientsArray.join();
+    }   
 }
 
 function getURL(recipeObj){
@@ -19,7 +25,7 @@ function getURL(recipeObj){
 
 //TODO: Function creating the Modal HTML components dynamically with jQuery
 function populateModal(recipeObj){
-    let modal = $(".modal-header")
+    let modal = $("#recipe-modal-header")
     modal.text("");
     //TODO: Standard elements of Modal containing the following
     //Header div
@@ -69,7 +75,7 @@ function populateModal(recipeObj){
 }
 
 function populateAbout(recipeObj){
-    let modal = $(".modal-content")
+    let modal = $("#recipe-modal-content")
     modal.text("");
     //TODO: About modal containing the following
     //Div to store info 2 cols 
@@ -121,7 +127,7 @@ function populateAbout(recipeObj){
 }
 
 function populateMethod(recipeObj) {
-    let modal = $(".modal-content")
+    let modal = $("#recipe-modal-content")
 
     let methodDiv = $("<div>");
     let methodPara = $("<p>");
@@ -134,7 +140,7 @@ function populateMethod(recipeObj) {
 }
 
 function populateNutInfo(recipeObj){
-    let modal = $(".modal-content")
+    let modal = $("#recipe-modal-content")
     modal.text("");
     //TODO: Nutritional info modal containing the following (Total, per serve and % daily)
     //Creating the table header items
@@ -349,9 +355,9 @@ function searchRecipes (){
             // console.log(response.hits[i].recipe.shareAs);
             // console.log(response.hits[i].recipe.totalTime);
             let recipesList = $('#recipes-list');
-            let divOne      = $('<div>').attr({'class':'col s12 m6 l4 xl3',});
+            let divOne      = $('<div>').attr({'class':'col s12 m6 l4 xl3 recipesCol', });
                 recipesList.append(divOne)
-            let divTwo      = ($('<div>').attr({'class':'card small modal-trigger','href':'#modal1','data-url': `${response.hits[i].recipe.url}`, 'index': i}));
+            let divTwo      = ($('<div>').attr({'class':'card small modal-trigger recipesCard','href':'#modal1','data-url': `${response.hits[i].recipe.url}`, 'index': i}));
                 divOne.append(divTwo);
             let divThree    = ($('<div>').attr({'class':'card-image'}));
                 divTwo.append(divThree);
@@ -360,6 +366,7 @@ function searchRecipes (){
             let imgElement  = ($('<img>').attr({'src': `${response.hits[i].recipe.image}`}));
                 divThree.append(imgElement)
             let spanElement = divFour.append($('<span>').attr({'class':'card-title', 'id':'card-title'}).text(`${response.hits[i].recipe.label}`));
+            let saveButton = divOne.append($('<button>').attr({'class':'save-recipe-button', 'index':i}).text('save'));
             // let pElement    = divFour.append($('<p>').attr({'class':'card-text'}).text(`Total Time: ${response.hits[i].recipe.totalTime}`));          
         }
     
@@ -405,26 +412,101 @@ function searchRecipes (){
 
             // $('.modal').modal() //this function will open the modal when click
 
-            });
-
-            $.ajax({
-                url: recipeURL,
-                method: "GET"
             }).catch(function(error) { 
                 console.log(error)
             });
 
-            $('.modal').modal() //this function will open the modal when click
+
+            $('#modal1').modal() //this function will open the modal when click
+        });
+        
+        $('.save-recipe-button').on('click',function(event){
+            event.preventDefault();
+            console.log(`save recipe index ${$(event.target).attr('index')}`);
+            let index = $(event.target).attr('index');
+            let savedRecipes = response.hits[index].recipe;
+            console.log(savedRecipes);
+            favouriteRecipes.push(savedRecipes);
+            localStorage.setItem('favouriteRecipes', JSON.stringify(favouriteRecipes));
+            console.log(favouriteRecipes);
         })
+
+    }).catch(function(error){
+        console.log(error);
     });
 }
+
+function addIngredient(){
+    let ul = $('#list-of-ingredients');
+    let theItems = $('#textarea1').val();
+    let newDiv = $('<div>').attr('class','ingredient-list');
+    let removeButton = $('<button>').attr('class','remove-ingredient-button').text('x');
+    
+    newDiv.text(theItems);
+    newDiv.append(removeButton);
+    ul.append(newDiv);
+    $('.remove-ingredient-button').on('click',function(event){
+        event.preventDefault();
+        // console.log(event);
+        $(event.target).parent().remove();
+    })
+}
+
+$('#btnadd').on('click',function(event){
+    event.preventDefault();
+    console.log(event);
+    if($('#textarea1').val()===""){
+        alert('enter an ingredient');
+    }else{
+        addIngredient();
+        $('#textarea1').val("");
+    }
+})
 
 $('#get-recipe-button').on('click', function(event){
     event.preventDefault();
     console.log(event);
-    searchRecipes();
-    
+    if($('div[class=card-image]').length !== 0){
+        $('.save-recipe-button').remove();
+        $('img').remove();
+        $('.card-title').remove()
+        $('.card-content').remove();
+        $('.card-image').remove();
+        $('.recipesCard').remove();
+        $('.recipesCol').remove();
+        searchRecipes();
+    }else{
+        searchRecipes();
+    }
 })
+
+
+
+// function to open modal when "About Reci-Bits" button on nav bar is clicked
+$('#about-modal').modal();
+
+function appendSavedRecipes(){
+    for (let i = favouriteRecipes.length; i >= 0; i--){
+        if(favouriteRecipes[i] !== undefined){
+            let modalContent = $('#favourite-recipe-modal-content');
+            let divOne = $('<div>').attr({'class':'row favourite-recipe','data-favouriteRecipe-index':i});
+            modalContent.append(divOne);
+            let image = $('<img>').attr({'src': `${favouriteRecipes[i].image}`});
+            divOne.append(image);
+            let title = $('<span>').attr({'class':'saved-recipe-title'}).text(`${favouriteRecipes[i].label}`);
+            divOne.append(title);
+        }
+    }
+}
+
+$('#favourite-recipe-modal-button').on('click',function(event){
+    $('.favourite-recipe').remove();
+    appendSavedRecipes();
+    $('#favourite-recipe-modal').modal();
+})
+
+
+
 
 
 
