@@ -3,9 +3,10 @@ let appKEY = '808b4ecac7df60930d1456576a2afadc';
 let ingredients = "";
 const spoonacularAPI = "59b7c5b4387043649860e827d13b1445"
 
+let favouriteRecipes = JSON.parse(localStorage.getItem('favouriteRecipes')) || [];
+
 function getIngredientsList(){
     let ingredientsList = $('.ingredient-list');
-    console.log(ingredientsList);
     let ingredientsArray = [];
     if(ingredientsList.length == 0){
         alert("please enter at least one ingredient")
@@ -365,6 +366,7 @@ function searchRecipes (){
             let imgElement  = ($('<img>').attr({'src': `${response.hits[i].recipe.image}`}));
                 divThree.append(imgElement)
             let spanElement = divFour.append($('<span>').attr({'class':'card-title', 'id':'card-title'}).text(`${response.hits[i].recipe.label}`));
+            let saveButton = divOne.append($('<button>').attr({'class':'save-recipe-button', 'index':i}).text('save'));
             // let pElement    = divFour.append($('<p>').attr({'class':'card-text'}).text(`Total Time: ${response.hits[i].recipe.totalTime}`));          
         }
     
@@ -416,7 +418,19 @@ function searchRecipes (){
 
 
             $('#modal1').modal() //this function will open the modal when click
+        });
+        
+        $('.save-recipe-button').on('click',function(event){
+            event.preventDefault();
+            console.log(`save recipe index ${$(event.target).attr('index')}`);
+            let index = $(event.target).attr('index');
+            let savedRecipes = response.hits[index].recipe;
+            console.log(savedRecipes);
+            favouriteRecipes.push(savedRecipes);
+            localStorage.setItem('favouriteRecipes', JSON.stringify(favouriteRecipes));
+            console.log(favouriteRecipes);
         })
+
     }).catch(function(error){
         console.log(error);
     });
@@ -452,8 +466,8 @@ $('#btnadd').on('click',function(event){
 $('#get-recipe-button').on('click', function(event){
     event.preventDefault();
     console.log(event);
-    console.log($('div[class=card-image]'));
     if($('div[class=card-image]').length !== 0){
+        $('.save-recipe-button').remove();
         $('img').remove();
         $('.card-title').remove()
         $('.card-content').remove();
@@ -467,8 +481,31 @@ $('#get-recipe-button').on('click', function(event){
 })
 
 
+
 // function to open modal when "About Reci-Bits" button on nav bar is clicked
-$('#about-modal').modal()
+$('#about-modal').modal();
+
+function appendSavedRecipes(){
+    for (let i = favouriteRecipes.length; i >= 0; i--){
+        if(favouriteRecipes[i] !== undefined){
+            let modalContent = $('#favourite-recipe-modal-content');
+            let divOne = $('<div>').attr({'class':'row favourite-recipe','data-favouriteRecipe-index':i});
+            modalContent.append(divOne);
+            let image = $('<img>').attr({'src': `${favouriteRecipes[i].image}`});
+            divOne.append(image);
+            let title = $('<span>').attr({'class':'saved-recipe-title'}).text(`${favouriteRecipes[i].label}`);
+            divOne.append(title);
+        }
+    }
+}
+
+$('#favourite-recipe-modal-button').on('click',function(event){
+    $('.favourite-recipe').remove();
+    appendSavedRecipes();
+    $('#favourite-recipe-modal').modal();
+})
+
+
 
 
 

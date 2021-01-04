@@ -39,10 +39,15 @@
       <!-- Nav bar-->
       <nav class="light-blue lighten-1" role="navigation">
         <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">RECI-BITS</a> 
+          <ul id="nav-mobile" class="left">
+            <li><a id="favourite-recipe-modal-button" class="waves-effect waves-light btn modal-trigger" href="#favourite-recipe-modal"> 
+              Favourite Recipes 
+            </a></li>
+          </ul>
           <ul id="nav-mobile" class="right">
             <li><a id="about-modal-button" class="waves-effect waves-light btn modal-trigger" href="#about-modal"> 
               About Reci-Bits 
-          </a></li>
+            </a></li>
           </ul>
         </div>
       </nav>
@@ -90,6 +95,21 @@
     </div>
                    
     <!--Modal start-->
+
+    <!-- Modal for Favourite Recipes -->
+    <div id="favourite-recipe-modal" class="modal">
+      <div class="modal-header" id="about-modal-header">
+          Favourite Recipes
+      </div>
+      <div class="modal-content" id="favourite-recipe-modal-content">
+        <!-- append list of saved recipe here -->
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+      </div>
+    </div>
+    <!-- Modal for Favourite Recipes -->
+
     <!-- Modal for About Reci-Bits -->
     <div id="about-modal" class="modal">
       <div class="modal-header" id="about-modal-header">
