@@ -110,6 +110,7 @@ p.card-text{
   display: flex;
   margin: 0;
   position: relative;
+  width: 150px;
   height: 150px;
   --heightA: 150px;
   top: calc(-80px - var(--heightA)/2);
