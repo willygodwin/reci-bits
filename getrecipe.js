@@ -30,6 +30,7 @@ function populateModal(recipeObj){
     //TODO: Standard elements of Modal containing the following
     //Header div
     let headerDiv = $("<div>");
+    headerDiv.addClass("header-div");
     
     //Recipe Name header
     let nameHeader = $("<h4>")
@@ -100,6 +101,9 @@ function populateAbout(recipeObj){
     cookingTimeDiv.text("Cooking Time: " + recipeObj.totalTime + " minutes");
 
     //Ingredient List 
+    let ingredientsHeader = $("<div>");
+    ingredientsHeader.addClass("ingr-header-div")
+    ingredientsHeader.text("Ingredients:")
     let ingredientsDiv = $("<ul>");
     ingredientsDiv.addClass("info-div");
     let item;
@@ -114,11 +118,13 @@ function populateAbout(recipeObj){
     recipeURL.addClass("info-div");
 
     recipeURL.attr("href",  recipeObj.url)
+    recipeURL
     recipeURL.text("Link to recipe:")
 
     //Append all of the above
     infoDiv.append(servesDiv);
     infoDiv.append(cookingTimeDiv);
+    infoDiv.append(ingredientsHeader)
     infoDiv.append(ingredientsDiv);
     infoDiv.append(recipeURL);
     row.append(imageDiv)
@@ -130,10 +136,14 @@ function populateMethod(recipeObj) {
     let modal = $("#recipe-modal-content")
 
     let methodDiv = $("<div>");
+    let methodHeader = $("<div>");
+    methodHeader.addClass("meth-header-div");
+    methodHeader.text("Instructions:");
     let methodPara = $("<p>");
-    methodPara.text(recipeObj.instructions)
+    methodPara.text(recipeObj.instructions);
     
-    methodDiv.append(methodPara)
+    methodDiv.append(methodHeader);
+    methodDiv.append(methodPara);
     modal.append(methodDiv);
 
 

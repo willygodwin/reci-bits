@@ -88,6 +88,8 @@ function populateAbout(recipeObj){
     cookingTimeDiv.text("Cooking Time: " + recipeObj.totalTime + " minutes");
 
     //Ingredient List 
+    let ingredientsHeader = $("<div>");
+    ingredientsHeader.addClass("ingr-header-div")
     let ingredientsDiv = $("<ul>");
     ingredientsDiv.addClass("info-div");
     let item;

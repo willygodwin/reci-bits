@@ -1,4 +1,4 @@
-#favourite-recipe-modal{
+/* #favourite-recipe-modal{
   width: 95%;
   max-height: 95%;
 }
@@ -10,7 +10,7 @@
 #modal1{
   width: 95%;
   max-height: 95%;
-}
+} */
 
 html,body {
     margin:0;
@@ -65,3 +65,9 @@ p.card-text{
       width: 90%;
     }
   }
+
+  .ingr-header-div, .meth-header-div {
+    padding-top: 10px;
+    font-weight: 600;
+    
+}

@@ -17,3 +17,19 @@
     justify-content: left;
     margin: none;
 }
+
+.modal {
+    overflow: hidden;
+    height: 100%;
+    display: flex !important;
+    flex-direction: column;
+}
+
+.modal .modal-content {
+    overflow: auto;
+    height: 100%;
+}
+
+.modal .row {
+    height: 100%
+}
