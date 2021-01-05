@@ -166,7 +166,7 @@ p.card-text{
   text-align: center;
 }
 
-.save-recipe-button:hover {
+.save-recipe-button:hover, .save-recipe-button:active {
   border-width: 0;
   background-color: white;
   color: rgba(75, 74, 74, 0.589);
