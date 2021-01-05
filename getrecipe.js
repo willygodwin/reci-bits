@@ -148,10 +148,12 @@ function populateMethod(recipeObj) {
     let modal = $("#recipe-modal-content")
 
     let methodDiv = $("<div>");
+    methodDiv.addClass("row method-div")
     let methodHeader = $("<div>");
-    methodHeader.addClass("meth-header-div");
+    methodHeader.addClass("meth-header-div col s12");
     methodHeader.text("Instructions:");
     let methodPara = $("<p>");
+    methodPara.addClass("col s12");
     methodPara.text(recipeObj.instructions);
     
     methodDiv.append(methodHeader);
@@ -241,7 +243,7 @@ function populateNutInfo(recipeObj){
     let fatRow = $("<tr>");
 
     let fat = $("<td>");
-    fat.text("fat:")
+    fat.text("Fat:")
 
     let fatTN = $("<td>");
     fatTN.text(Math.round(recipeObj.totalNutrients.FAT.quantity) + " " + recipeObj.totalNutrients.FAT.unit)
@@ -263,7 +265,7 @@ function populateNutInfo(recipeObj){
     let carbsRow = $("<tr>");
 
     let carbs = $("<td>");
-    carbs.text("carbs:")
+    carbs.text("Carbs:")
 
     let carbsTN = $("<td>");
     carbsTN.text(Math.round(recipeObj.totalNutrients.CHOCDF.quantity) + " " + recipeObj.totalNutrients.CHOCDF.unit)
@@ -285,7 +287,7 @@ function populateNutInfo(recipeObj){
     let sugarRow = $("<tr>");
 
     let sugar = $("<td>");
-    sugar.text("sugar:")
+    sugar.text("Sugar:")
 
     let sugarTN = $("<td>");
     sugarTN.text(Math.round(recipeObj.totalNutrients.SUGAR.quantity) + " " + recipeObj.totalNutrients.SUGAR.unit)
@@ -307,7 +309,7 @@ function populateNutInfo(recipeObj){
     let fibreRow = $("<tr>");
 
     let fibre = $("<td>");
-    fibre.text("fibre:")
+    fibre.text("Fibre:")
 
     let fibreTN = $("<td>");
     fibreTN.text(Math.round(recipeObj.totalNutrients.FIBTG.quantity) + " " + recipeObj.totalNutrients.FIBTG.unit)
@@ -329,7 +331,7 @@ function populateNutInfo(recipeObj){
     let saltRow = $("<tr>");
 
     let salt = $("<td>");
-    salt.text("salt:")
+    salt.text("Salt:")
 
     let saltTN = $("<td>");
     saltTN.text(Math.round(recipeObj.totalNutrients.NA.quantity) + " " + recipeObj.totalNutrients.NA.unit)

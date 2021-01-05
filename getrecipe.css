@@ -137,10 +137,16 @@ p.card-text{
     }
   }
 
-  .ingr-header-div, .meth-header-div {
-    padding-top: 10px;
-    font-weight: 600;
-    
+.ingr-header-div {
+  padding-top: 10px;
+  font-weight: 600;
+  
+}
+
+.meth-header-div {
+  padding-top: 20px;
+  font-weight: 600;
+  
 }
 
 .save-recipe-button {
@@ -158,6 +164,7 @@ p.card-text{
   border-radius: 15px 15px 15px 15px;
   font-size: 1.5em;
   text-align: center;
+  cursor: pointer;
 } 
 
 .subscript{
@@ -185,10 +192,12 @@ p.card-text{
 }
 
 .modal {
+  border-radius: 1rem;
   overflow: hidden;
   height: 100%;
   display: flex !important;
   flex-direction: column;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
 }
 
 .modal .modal-content {
@@ -196,6 +205,25 @@ p.card-text{
   height: 100%;
 }
 
-.modal .row {
+/* .modal .row {
   height: 100%
+} */
+
+.modal .header-div {
+  margin-bottom: 10px;
 }
+
+.method-div {
+  margin-top: 20px;
+}
+
+.about-recipe:hover {
+  color: rgba(0, 0, 0, 0.507);
+  cursor: pointer;
+}
+
+.nutInfo-recipe:hover {
+  color: rgba(0, 0, 0, 0.507);
+  cursor: pointer;
+}
+
