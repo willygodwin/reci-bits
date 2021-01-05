@@ -1,17 +1,3 @@
-/* #favourite-recipe-modal{
-  width: 95%;
-  max-height: 95%;
-}
-#about-modal{
-  width: 95%;
-  max-height: 95%;
-}
-
-#modal1{
-  width: 95%;
-  max-height: 95%;
-} */
-
 html,body {
     margin:0;
     padding:0;
@@ -21,7 +7,6 @@ html,body {
     text-align:center;
     
 }
-
 
 span#card-title{
     font-size: 1.2rem;
