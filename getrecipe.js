@@ -390,7 +390,7 @@ function searchRecipes (){
             let imgElement  = ($('<img>').attr({'src': `${response.hits[i].recipe.image}`}));
                 divThree.append(imgElement)
             let spanElement = divFour.append($('<span>').attr({'class':'card-title', 'id':'card-title'}).text(`${response.hits[i].recipe.label}`));
-            let saveButton = divTwo.append($('<button>').attr({'class':'far fa-save saveIcon save-recipe-button', 'index':i}));
+            let saveButton = divTwo.append($('<button>').attr({'class':'far fa-star saveIcon save-recipe-button', 'index':i}));
             
             // let pElement    = divFour.append($('<p>').attr({'class':'card-text'}).text(`Total Time: ${response.hits[i].recipe.totalTime}`));          
         }
