@@ -37,9 +37,6 @@
         <div class="nav-wrapper">
           <a href="#about-modal" class="brand-logo center">Reci-Bits</a>
           <ul id="nav-mobile" class="left hide-on-med-and-down">
-            <li><a id="favourite-recipe-modal-button" class="waves-effect waves-light btn modal-trigger" href="#favourite-recipe-modal"> 
-              Favourite Recipes 
-            </a></li>
             <li><a id="about-modal-button" class="btn modal-trigger" href="#about-modal"> 
               About Reci-Bits 
             </a></li>
@@ -55,19 +52,18 @@
 
       <div class="search-text"> 
         <div class="container">
-      <div class="row">
-        <form class="col s6 m10">
-          <div class="row">
-            <div class="input-field col s6">
-              <textarea id="textarea1" class="materialize-textarea"></textarea>
-              <label for="textarea1">What in your fridge?</label>
-              <button id="btnadd" type="button"><i class="fas fa-plus"></i> </button>
-            </div>
+          <div class="row" id="row1-search-text">
+            <form class="col" id="col1-search-text">
+              <div class="row" id="row2-search-text">
+                <div class="input-field col">
+                  <textarea id="textarea1" class="materialize-textarea" placeholder="What is in your Fridge?"></textarea>
+                  <button id="btnadd" type="button"><i class="fas fa-plus"></i> </button>
+                </div>
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
-      </div>
-      </div><dat</datagrid></dat>
       <!-- Search bar end --> 
 
       <!-- carousel for saved recipe -->
@@ -86,10 +82,9 @@
       <!--Cart list plus button -->
       <div class="container">
         <div class="row">
-          <div class="col s12 m5">
-            <div class="card-panel">
-              <span class="white-text left">List of Ingredients:</span>
-              <br>
+          <div class="col">
+            <div class="card-panel" id="card-panel"> 
+              
               <div id="list-of-ingredients">
                 <!-- the ingredient input goes here -->
                
@@ -114,24 +109,10 @@
                    
     <!--Modal start-->
 
-    <!-- Modal for Favourite Recipes -->
-    <div id="favourite-recipe-modal" class="modal">
-      <div class="modal-header" id="about-modal-header">
-          Favourite Recipes
-      </div>
-      <div class="modal-content" id="favourite-recipe-modal-content">
-        <!-- append list of saved recipe here -->
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-      </div>
-    </div>
-    <!-- Modal for Favourite Recipes -->
-
     <!-- Modal for About Reci-Bits -->
     <div id="about-modal" class="modal">
       <div class="modal-header" id="about-modal-header">
-          About Reci-Bits
+        About Reci-Bits
       </div>
       <div class="modal-content" id="about-modal-content">
         <p>Reci-Bits is a web app to search recipe and nutrition information by using APIs.<br>
@@ -154,8 +135,6 @@
 
       </div>
       <div class="modal-content" id="recipe-modal-content">
-        <h4>Tutorialsplane.com</h4>
-        <p>Learn more @ tutorialsplane.com!</p>
       </div>
       <div class="modal-footer">
         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
