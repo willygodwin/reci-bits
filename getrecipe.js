@@ -34,6 +34,7 @@ function populateModal(recipeObj){
     //TODO: Standard elements of Modal containing the following
     //Header div
     let headerDiv = $("<div>");
+    headerDiv.addClass("header-div");
     
     //Recipe Name header
     let nameHeader = $("<h4>")
@@ -47,7 +48,15 @@ function populateModal(recipeObj){
     else {
         let cautions = ""
         for(let i = 0; i < recipeObj.cautions.length ; i ++){
-            cautions = cautions + " " + recipeObj.cautions[i];
+            if (i === 0) {
+                cautions = cautions + " " + recipeObj.cautions[i];
+            }
+            else if (i === recipeObj.cautions.length - 1) {
+                cautions = cautions + " & " + recipeObj.cautions[i];
+            }
+            else {
+                cautions = cautions + ", " + recipeObj.cautions[i];
+            }    
         }
         cautionsSub.text("Warning this may contain" + cautions);
     }
@@ -73,7 +82,7 @@ function populateModal(recipeObj){
     toggleDiv.append(nutInfoDiv);
 
     //Append elements to the modal 
-    modal.append(nameHeader);
+    modal.append(headerDiv);
     modal.append(toggleDiv);
     
 }
@@ -104,6 +113,9 @@ function populateAbout(recipeObj){
     cookingTimeDiv.text("Cooking Time: " + recipeObj.totalTime + " minutes");
 
     //Ingredient List 
+    let ingredientsHeader = $("<div>");
+    ingredientsHeader.addClass("ingr-header-div")
+    ingredientsHeader.text("Ingredients:")
     let ingredientsDiv = $("<ul>");
     ingredientsDiv.addClass("info-div");
     let item;
@@ -117,12 +129,14 @@ function populateAbout(recipeObj){
     let recipeURL = $("<a>");
     recipeURL.addClass("info-div");
 
-    recipeURL.attr("href",  recipeObj.url)
-    recipeURL.text("Link to recipe:")
+    recipeURL.attr("href",  recipeObj.url);
+    recipeURL.attr("target", "_blank" );
+    recipeURL.text("Link to recipe");
 
     //Append all of the above
     infoDiv.append(servesDiv);
     infoDiv.append(cookingTimeDiv);
+    infoDiv.append(ingredientsHeader)
     infoDiv.append(ingredientsDiv);
     infoDiv.append(recipeURL);
     row.append(imageDiv)
@@ -134,10 +148,16 @@ function populateMethod(recipeObj) {
     let modal = $("#recipe-modal-content")
 
     let methodDiv = $("<div>");
+    methodDiv.addClass("row method-div")
+    let methodHeader = $("<div>");
+    methodHeader.addClass("meth-header-div col s12");
+    methodHeader.text("Instructions:");
     let methodPara = $("<p>");
-    methodPara.text(recipeObj.instructions)
+    methodPara.addClass("col s12");
+    methodPara.text(recipeObj.instructions);
     
-    methodDiv.append(methodPara)
+    methodDiv.append(methodHeader);
+    methodDiv.append(methodPara);
     modal.append(methodDiv);
 
 
@@ -223,7 +243,7 @@ function populateNutInfo(recipeObj){
     let fatRow = $("<tr>");
 
     let fat = $("<td>");
-    fat.text("fat:")
+    fat.text("Fat:")
 
     let fatTN = $("<td>");
     fatTN.text(Math.round(recipeObj.totalNutrients.FAT.quantity) + " " + recipeObj.totalNutrients.FAT.unit)
@@ -245,7 +265,7 @@ function populateNutInfo(recipeObj){
     let carbsRow = $("<tr>");
 
     let carbs = $("<td>");
-    carbs.text("carbs:")
+    carbs.text("Carbs:")
 
     let carbsTN = $("<td>");
     carbsTN.text(Math.round(recipeObj.totalNutrients.CHOCDF.quantity) + " " + recipeObj.totalNutrients.CHOCDF.unit)
@@ -267,7 +287,7 @@ function populateNutInfo(recipeObj){
     let sugarRow = $("<tr>");
 
     let sugar = $("<td>");
-    sugar.text("sugar:")
+    sugar.text("Sugar:")
 
     let sugarTN = $("<td>");
     sugarTN.text(Math.round(recipeObj.totalNutrients.SUGAR.quantity) + " " + recipeObj.totalNutrients.SUGAR.unit)
@@ -289,7 +309,7 @@ function populateNutInfo(recipeObj){
     let fibreRow = $("<tr>");
 
     let fibre = $("<td>");
-    fibre.text("fibre:")
+    fibre.text("Fibre:")
 
     let fibreTN = $("<td>");
     fibreTN.text(Math.round(recipeObj.totalNutrients.FIBTG.quantity) + " " + recipeObj.totalNutrients.FIBTG.unit)
@@ -311,7 +331,7 @@ function populateNutInfo(recipeObj){
     let saltRow = $("<tr>");
 
     let salt = $("<td>");
-    salt.text("salt:")
+    salt.text("Salt:")
 
     let saltTN = $("<td>");
     saltTN.text(Math.round(recipeObj.totalNutrients.NA.quantity) + " " + recipeObj.totalNutrients.NA.unit)
@@ -370,7 +390,8 @@ function searchRecipes (){
             let imgElement  = ($('<img>').attr({'src': `${response.hits[i].recipe.image}`}));
                 divThree.append(imgElement)
             let spanElement = divFour.append($('<span>').attr({'class':'card-title', 'id':'card-title'}).text(`${response.hits[i].recipe.label}`));
-            let saveButton = divOne.append($('<button>').attr({'class':'save-recipe-button', 'index':i}).text('save'));
+            let saveButton = divTwo.append($('<button>').attr({'class':'far fa-star saveIcon save-recipe-button', 'index':i}));
+            
             // let pElement    = divFour.append($('<p>').attr({'class':'card-text'}).text(`Total Time: ${response.hits[i].recipe.totalTime}`));          
         }
     
@@ -426,6 +447,7 @@ function searchRecipes (){
         
         $('.save-recipe-button').on('click',function(event){
             event.preventDefault();
+            event.stopPropagation();
             console.log(`save recipe index ${$(event.target).attr('index')}`);
             let index = $(event.target).attr('index');
             let savedRecipes = response.hits[index].recipe;
