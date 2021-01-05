@@ -44,7 +44,15 @@ function populateModal(recipeObj){
     else {
         let cautions = ""
         for(let i = 0; i < recipeObj.cautions.length ; i ++){
-            cautions = cautions + " " + recipeObj.cautions[i];
+            if (i === 0) {
+                cautions = cautions + " " + recipeObj.cautions[i];
+            }
+            else if (i === recipeObj.cautions.length - 1) {
+                cautions = cautions + " & " + recipeObj.cautions[i];
+            }
+            else {
+                cautions = cautions + ", " + recipeObj.cautions[i];
+            }    
         }
         cautionsSub.text("Warning this may contain" + cautions);
     }
@@ -70,7 +78,7 @@ function populateModal(recipeObj){
     toggleDiv.append(nutInfoDiv);
 
     //Append elements to the modal 
-    modal.append(nameHeader);
+    modal.append(headerDiv);
     modal.append(toggleDiv);
     
 }
@@ -117,9 +125,9 @@ function populateAbout(recipeObj){
     let recipeURL = $("<a>");
     recipeURL.addClass("info-div");
 
-    recipeURL.attr("href",  recipeObj.url)
-    recipeURL
-    recipeURL.text("Link to recipe:")
+    recipeURL.attr("href",  recipeObj.url);
+    recipeURL.attr("target", "_blank" );
+    recipeURL.text("Link to recipe");
 
     //Append all of the above
     infoDiv.append(servesDiv);

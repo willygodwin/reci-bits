@@ -1,5 +1,5 @@
 .subscript{
-    font-size: small;
+    font-size: xx-small;
     color: rgb(160, 153, 153);
 }
 
@@ -16,6 +16,10 @@
     text-align: left;
     justify-content: left;
     margin: none;
+}
+
+.header-div h4{
+    margin: 0px;
 }
 
 .modal {
