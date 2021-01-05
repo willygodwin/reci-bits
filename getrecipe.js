@@ -405,7 +405,7 @@ function searchRecipes (){
         
             populateModal(response.hits[index].recipe)
             populateAbout(response.hits[index].recipe)
-            
+
             let recipeURL = "https://api.spoonacular.com/recipes/extract?apiKey=" + spoonacularAPI + "&url=" + getURL(response.hits[index].recipe);
             
             $(".about-recipe").on("click", function(){
@@ -453,6 +453,8 @@ function searchRecipes (){
             favouriteRecipes.push(savedRecipes);
             localStorage.setItem('favouriteRecipes', JSON.stringify(favouriteRecipes));
             console.log(favouriteRecipes);
+            displaySavedRecipes();
+
         })
 
     }).catch(function(error){
@@ -500,8 +502,10 @@ $('#get-recipe-button').on('click', function(event){
         $('.recipesCard').remove();
         $('.recipesCol').remove();
         searchRecipes();
+        displaySavedRecipes();
     }else{
         searchRecipes();
+        displaySavedRecipes();
     }
 })
 
@@ -530,10 +534,62 @@ $('#favourite-recipe-modal-button').on('click',function(event){
     $('#favourite-recipe-modal').modal();
 })
 
+// add event listener to buttons to animate content left or right
+$('.left-button').click(function(){
+    let leftPos = $('.wrapper').scrollLeft();
+    $('.wrapper').animate({scrollLeft: leftPos - 450},400);
+})
+$('.right-button').click(function(){
+    let leftPos = $('.wrapper').scrollLeft();
+    $('.wrapper').animate({scrollLeft: leftPos + 450},400);
+})
 
+// function to display saved recipes on landing page of website
+function displaySavedRecipes(){
+    $('.saved-recipe-carousel-card').remove();
 
+    for (let i = favouriteRecipes.length; i >= 0; i--){
+        if(favouriteRecipes[i] !== undefined){
+            let savedRecipeCarousel = $('#saved-recipe-carousel');
+            let divOne = $('<div>').attr({'class':'saved-recipe-carousel-card modal-trigger','href':'#modal1','data-favouriteRecipe-index':i});
+            savedRecipeCarousel.append(divOne);
+            let image = $('<img>').attr({'src': `${favouriteRecipes[i].image}`, 'class':'saved-recipe-carousel-image',});
+            divOne.append(image);
+            let title = $('<span>').attr({'class':'saved-recipe-carousel-title'}).text(`${favouriteRecipes[i].label}`);
+            divOne.append(title);
+        }
+    }
 
+    $('.saved-recipe-carousel-card').on('click',function(event){
+        console.log($(event.currentTarget).attr('data-favouriteRecipe-index'));
+        let index = $(event.currentTarget).attr('data-favouriteRecipe-index');
+        console.log(index);
+        populateModal(favouriteRecipes[index]);
+        populateAbout(favouriteRecipes[index]);
+        let recipeURL = "https://api.spoonacular.com/recipes/extract?apiKey=" + spoonacularAPI + "&url=" + getURL(favouriteRecipes[index]); 
+        $(".about-recipe").on("click", function(){
+            populateAbout(favouriteRecipes[index]);
+        });
+        $(".nutInfo-recipe").on("click", function(){
+            populateNutInfo(favouriteRecipes[index]);
+        });
+         //AJAX call to the spoonacular API...
+        $.ajax({
+            url: recipeURL,
+            method: "GET"
+        }).then(function(response) {
+            populateMethod(response);
+            $(".about-recipe").on("click", function(){
+                populateMethod(response);
+            });
+        }).catch(function(error) { 
+            console.log(error)
+        });
+        $('#modal1').modal() //this function will open the modal when click
 
-
+    });
+}
+// call function to display saved recipe on landing page of website
+displaySavedRecipes();
 
 
