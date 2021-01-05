@@ -1,19 +1,72 @@
-.subscript{
-    font-size: small;
-    color: rgb(160, 153, 153);
-}
-
-.info-div-parent{
-    display: flex; 
-    flex-direction: column;
-    justify-content: left;
-    text-align: left;
-    margin-left: 10px;
-    margin: none;
-}
-
-.info-div {
-    text-align: left;
-    justify-content: left;
-    margin: none;
-}
+.bodyContainer {
+    background: url("https://i.postimg.cc/7hCh0wyZ/cooking.png");
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    padding: 15px;
+    
+    }
+      
+      .subscript{
+        font-size: small;
+        color: rgb(160, 153, 153);
+      }
+      
+      .info-div-parent{
+        display: flex;  
+        flex-direction: column;
+        justify-content: left;
+        text-align: left;
+        margin-left: 10px;
+        margin: none;
+      }
+      
+      .info-div {
+        text-align: left;
+        justify-content: left;
+        margin: none;
+      }
+    
+      .card-panel {
+          border: double;
+          width: 450px;
+          height: 440px;
+         
+      }
+    
+      a.btn-large {
+          display: flex;
+          background-color: maroon;
+      }
+    
+      .container {
+          display: flex;
+      }
+    
+      .row .col.s6 {
+        margin: auto;
+        padding: 10px;
+        display: inline-block;
+        width: 100%;
+      }
+      form {
+        display: inline-block;
+    }
+    .nav-wrapper {
+        border: double;
+        background-color: maroon;
+    }
+    a.btn {
+        border: double;
+        background-color: maroon;
+    
+    }
+    
+    button {
+      margin: 0;
+      position: absolute;
+    
+    }
+    
+    a.btn-large {
+      position: relative;
+    }
