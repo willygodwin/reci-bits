@@ -71,3 +71,16 @@ p.card-text{
     font-weight: 600;
     
 }
+
+.save-recipe-button {
+  color:  rgba(0, 0, 0, 0.589);
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.save-recipe-button:hover {
+  color: rgba(75, 74, 74, 0.589);
+  border-radius: 15px 15px 15px 15px;
+  font-size: 1.5em;
+  text-align: center;
+} 
