@@ -5,12 +5,16 @@ const spoonacularAPI = "59b7c5b4387043649860e827d13b1445"
 
 let favouriteRecipes = JSON.parse(localStorage.getItem('favouriteRecipes')) || [];
 
+let myspan=$("#alertspan");// the span where the warning message come if the ingredient or the list is empty
+
 function getIngredientsList(){
     let ingredientsList = $('.ingredient-list');
     let ingredientsArray = [];
+    
     if(ingredientsList.length == 0){
-        alert("please enter at least one ingredient")
+        myspan.text("please enter at least one ingredient")
     }else{
+        myspan.text("")
         for(let j = 0; j < ingredientsList.length; j++){
         let text = ingredientsList[j].childNodes[0].data;
         ingredientsArray.push(text);
@@ -458,8 +462,9 @@ $('#btnadd').on('click',function(event){
     event.preventDefault();
     console.log(event);
     if($('#textarea1').val()===""){
-        alert('enter an ingredient');
+        myspan.text("please enter at least one ingredient")
     }else{
+        myspan.text("")
         addIngredient();
         $('#textarea1').val("");
     }
