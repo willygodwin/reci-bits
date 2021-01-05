@@ -530,11 +530,11 @@ function appendSavedRecipes(){
     }
 }
 
-$('#favourite-recipe-modal-button').on('click',function(event){
-    $('.favourite-recipe').remove();
-    appendSavedRecipes();
-    $('#favourite-recipe-modal').modal();
-})
+// $('#favourite-recipe-modal-button').on('click',function(event){
+//     $('.favourite-recipe').remove();
+//     appendSavedRecipes();
+//     $('#favourite-recipe-modal').modal();
+// })
 
 // add event listener to buttons to animate content left or right
 $('.left-button').click(function(){

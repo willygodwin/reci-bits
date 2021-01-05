@@ -44,6 +44,7 @@ p.card-text{
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 30px;
 }
 
 .right-button,.left-button{
@@ -110,6 +111,7 @@ p.card-text{
   display: flex;
   margin: 0;
   position: relative;
+  width: 150px;
   height: 150px;
   --heightA: 150px;
   top: calc(-80px - var(--heightA)/2);

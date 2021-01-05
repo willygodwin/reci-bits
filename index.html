@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!--Font awesome link-->
+    <script src="https://kit.fontawesome.com/c4dd25ca8c.js" crossorigin="anonymous"></script>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="getrecipe.css">
+    <link rel="stylesheet" href="style.css">
+
     <!-- Import fontawesome for fa save icon -->
     <link
       rel="stylesheet"
@@ -18,45 +25,49 @@
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
   </head>
 
   <body>
+
     <div class="bodyContainer"> 
-      <!-- Nav bar-->
-      <nav class="light-blue lighten-1" role="navigation">
-        <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">RECI-BITS</a> 
-          <ul id="nav-mobile" class="left">
-            <li><a id="favourite-recipe-modal-button" class="waves-effect waves-light btn modal-trigger" href="#favourite-recipe-modal"> 
-              Favourite Recipes 
-            </a></li>
-          </ul>
-          <ul id="nav-mobile" class="right">
-            <li><a id="about-modal-button" class="waves-effect waves-light btn modal-trigger" href="#about-modal"> 
+     
+
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#about-modal" class="brand-logo center">Reci-Bits</a>
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a id="about-modal-button" class="btn modal-trigger" href="#about-modal"> 
               About Reci-Bits 
             </a></li>
+           
           </ul>
         </div>
       </nav>
-      <!-- Nav bar end-->
+
+      
+
 
       <!-- Search bar/ input start-->
-      <div class="row">
-        <form class="col s6 m5">
-            <div class="input-field col s12">
-              <textarea id="textarea1" class="materialize-textarea"></textarea>
-              <label for="textarea1">What in your fridge?</label>
-              <button id="btnadd" type="button">Add </button>
-            </div>
-        </form>
+
+      <div class="search-text"> 
+        <div class="container">
+          <div class="row" id="row1-search-text">
+            <form class="col" id="col1-search-text">
+              <div class="row" id="row2-search-text">
+                <div class="input-field col">
+                  <textarea id="textarea1" class="materialize-textarea" placeholder="What is in your Fridge?"></textarea>
+                  <button id="btnadd" type="button"><i class="fas fa-plus"></i> </button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
-        
-      <!-- span for notifying the user for empty ingredient box or empty search list-->  
-      <span id="alertspan" style="height: 50%; width: 80%; font-size: 3em; color: crimson;"></span>
-      
+      </div>
       <!-- Search bar end --> 
 
       <!-- carousel for saved recipe -->
-      <div>Recently Saved:</div>
+      <!-- <div>Recently Saved:</div> -->
       <div class="carousel-container">
         <button class="left-button"><i class="fas fa-chevron-left "></i></button>
           <div class="wrapper">
@@ -67,27 +78,25 @@
         <button class="right-button"><i class="fas fa-chevron-right"></i></button>
       </div>
       <!-- carousel for saved recipe -->
-      
   
       <!--Cart list plus button -->
       <div class="container">
         <div class="row">
-          <div class="col s12 m5">
-            <div class="card-panel teal">
-              <span class="white-text left">List of Ingredients:</span>
-              <br>
+          <div class="col">
+            <div class="card-panel" id="card-panel"> 
+              
               <div id="list-of-ingredients">
                 <!-- the ingredient input goes here -->
+               
               </div>
-              <a class="waves-effect waves-light btn-large" id="get-recipe-button">Get Recipes</a>
+              <a class="btn-large" id="get-recipe-button">Get Recipes</a>
               <br>
             </div>
           </div>
         </div>    
       </div>
       <!-- Cart list end -->
-
-      
+    </div>
 
       <!-- Card if ingridients has been generated-->
       <div class="container">
@@ -96,29 +105,14 @@
         </div>
       </div>
       <!-- Card if ingridients has been generated-->
-      
-    </div>
+    
                    
     <!--Modal start-->
-
-    <!-- Modal for Favourite Recipes -->
-    <div id="favourite-recipe-modal" class="modal">
-      <div class="modal-header" id="about-modal-header">
-          Favourite Recipes
-      </div>
-      <div class="modal-content" id="favourite-recipe-modal-content">
-        <!-- append list of saved recipe here -->
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-      </div>
-    </div>
-    <!-- Modal for Favourite Recipes -->
 
     <!-- Modal for About Reci-Bits -->
     <div id="about-modal" class="modal">
       <div class="modal-header" id="about-modal-header">
-          About Reci-Bits
+        About Reci-Bits
       </div>
       <div class="modal-content" id="about-modal-content">
         <p>Reci-Bits is a web app to search recipe and nutrition information by using APIs.<br>
@@ -141,8 +135,6 @@
 
       </div>
       <div class="modal-content" id="recipe-modal-content">
-        <h4>Tutorialsplane.com</h4>
-        <p>Learn more @ tutorialsplane.com!</p>
       </div>
       <div class="modal-footer">
         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
