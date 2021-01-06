@@ -390,9 +390,21 @@ function searchRecipes (){
             let imgElement  = ($('<img>').attr({'src': `${response.hits[i].recipe.image}`}));
                 divThree.append(imgElement)
             let spanElement = divFour.append($('<span>').attr({'class':'card-title', 'id':'card-title'}).text(`${response.hits[i].recipe.label}`));
-            let saveButton = divTwo.append($('<button>').attr({'class':'far fa-star saveIcon save-recipe-button', 'index':i}));
-            
-            // let pElement    = divFour.append($('<p>').attr({'class':'card-text'}).text(`Total Time: ${response.hits[i].recipe.totalTime}`));          
+           
+            // check whether recipes has been saved before and change the star color
+            let foundTitle = response.hits[i].recipe.label;
+            let foundIndex = favouriteRecipes.findIndex(function(post){
+                if(post.label == foundTitle){
+                    return true
+                }
+            });
+            if(foundIndex !== -1){
+                let saveButton = divTwo.append($('<span>').attr({'class':'far fa-star saveIcon save-recipe-button', 'index':i, 'style':'background-color:rgba(75, 160, 41, 0.8)'}));
+            }else{
+                let saveButton = divTwo.append($('<span>').attr({'class':'far fa-star saveIcon save-recipe-button', 'index':i}));
+            }
+            // check whether recipes has been saved before and change the star color
+               
         }
     
         $(`.card.small`).on('click',function(event){
@@ -448,14 +460,30 @@ function searchRecipes (){
         $('.save-recipe-button').on('click',function(event){
             event.preventDefault();
             event.stopPropagation();
-            console.log(`save recipe index ${$(event.target).attr('index')}`);
-            let index = $(event.target).attr('index');
-            let savedRecipes = response.hits[index].recipe;
-            console.log(savedRecipes);
-            favouriteRecipes.push(savedRecipes);
-            localStorage.setItem('favouriteRecipes', JSON.stringify(favouriteRecipes));
-            console.log(favouriteRecipes);
-            displaySavedRecipes();
+            let backgroundColor = $(this).css('background-color');
+            if(backgroundColor === 'rgba(74, 75, 74, 0.8)'){
+                $(this).css('background-color','rgba(75, 160, 41, 0.8)');
+                console.log(`save recipe index ${$(event.target).attr('index')}`);
+                let index = $(event.target).attr('index');
+                let savedRecipes = response.hits[index].recipe;
+                console.log(savedRecipes);
+                favouriteRecipes.push(savedRecipes);
+                localStorage.setItem('favouriteRecipes', JSON.stringify(favouriteRecipes));
+                console.log(favouriteRecipes);
+                displaySavedRecipes();
+            }else if( backgroundColor === 'rgba(75, 160, 41, 0.8)') {
+                $(this).css('background-color','rgba(74, 75, 74, 0.8)');
+                let index = $(event.target).attr('index');
+                let foundIndex = favouriteRecipes.findIndex(function(post){
+                    if(post.label == response.hits[index].recipe.label){
+                        return true
+                    }
+                });
+                favouriteRecipes.splice(foundIndex,1);
+                localStorage.setItem('favouriteRecipes', JSON.stringify(favouriteRecipes));
+                displaySavedRecipes();
+            }
+            
 
         })
 
@@ -495,7 +523,14 @@ $('#btnadd').on('click',function(event){
 $('#get-recipe-button').on('click', function(event){
     event.preventDefault();
     console.log(event);
+    let containerDisplayproperty = $('#recipe-list-container').css('display');
+    if(containerDisplayproperty === 'none'){
+        $('#recipe-list-container').css('display','block')
+    }
     if($('div[class=card-image]').length !== 0){
+        if(containerDisplayproperty === 'none'){
+            $('#recipe-list-container').css('display','block')
+        }
         $('.save-recipe-button').remove();
         $('img').remove();
         $('.card-title').remove()
@@ -506,6 +541,9 @@ $('#get-recipe-button').on('click', function(event){
         searchRecipes();
         displaySavedRecipes();
     }else{
+        if(containerDisplayproperty === 'none'){
+            $('#recipe-list-container').css('display','block')
+        }
         searchRecipes();
         displaySavedRecipes();
     }
@@ -593,5 +631,4 @@ function displaySavedRecipes(){
 }
 // call function to display saved recipe on landing page of website
 displaySavedRecipes();
-
 
