@@ -2,6 +2,7 @@ let appID = 'de24e9f5';
 let appKEY = '808b4ecac7df60930d1456576a2afadc';
 let ingredients = "";
 const spoonacularAPI = "59b7c5b4387043649860e827d13b1445"
+let isExisting = false;
 
 let favouriteRecipes = JSON.parse(localStorage.getItem('favouriteRecipes')) || [];
 
@@ -118,6 +119,7 @@ function populateAbout(recipeObj){
     ingredientsHeader.text("Ingredients:")
     let ingredientsDiv = $("<ul>");
     ingredientsDiv.addClass("info-div");
+    ingredientsDiv.attr('id', 'ingr-list');
     let item;
     for (let i = 0 ; i < recipeObj.ingredientLines.length ; i ++) {
         item = $("<li>");
@@ -520,13 +522,30 @@ $('#btnadd').on('click',function(event){
     event.preventDefault();
     console.log(event);
     if($('#textarea1').val()===""){
-        myspan.text("please enter at least one ingredient")
+        myspan.text("Please enter at least one ingredient!")
     }else{
         myspan.text("")
         addIngredient();
         $('#textarea1').val("");
     }
 })
+
+
+$('#textarea1').keydown( function( event ) {
+    if ( event.which === 13 ) {
+        // Do something
+        // Disable sending the related form
+        event.preventDefault();
+        console.log(event);
+        if($('#textarea1').val()===""){
+            myspan.text("Please enter at least one ingredient!")
+        }else{
+            myspan.text("")
+            addIngredient();
+            $('#textarea1').val("");
+        }
+    }
+});
 
 $('#get-recipe-button').on('click', function(event){
     event.preventDefault();
