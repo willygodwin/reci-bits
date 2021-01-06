@@ -131,15 +131,30 @@ p.card-text{
   font-weight: 700;
 }
 
+#ingr-list{
+  margin-top: 5px
+}
+
+#ingr-list li{
+  list-style-type: circle;
+    display: list-item;
+    margin-left: 18px;
+    padding-left: 0;
+}
+
+
 .ingr-header-div {
   padding-top: 10px;
   font-weight: 600;
+  text-decoration: underline;
+  
 }
 
 .meth-header-div {
   padding-top: 20px;
   font-weight: 600;
-
+  text-decoration: underline;;
+  
 }
 
 .save-recipe-button {
@@ -169,9 +184,10 @@ p.card-text{
 
 
 .subscript{
-  font-size: xx-small;
-  color: rgb(160, 153, 153);
+  font-size: small;
+  color: #ffffffd9;
 }
+
 
 .info-div-parent{
   display: flex; 
@@ -216,7 +232,9 @@ p.card-text{
 } */
 
 .modal .header-div {
+  padding-top: 10px;
   margin-bottom: 10px;
+  background-color: maroon;
 }
 
 .method-div {
@@ -233,6 +251,23 @@ p.card-text{
   cursor: pointer;
 }
 
+#alertspan {
+  font-size: small;
+
+}
+
+.toggle-recipe {
+  padding-bottom: 10px;
+  margin: 0px;
+}
+
+#logo {
+  height: 40px;
+  width: 170px;
+  margin-top: 10px;
+
+}
+
 #recipe-list-container{
   display: none;
 }
@@ -246,6 +281,14 @@ p.card-text{
   .container {
     width: 90%;
   }
+
+  #logo {
+    height: 45px;
+    width: 180px;
+    margin-top: 10px;
+  
+  }
+
 }
 @media only screen and (min-width: 993px) {
   .container {
