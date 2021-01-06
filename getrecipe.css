@@ -124,18 +124,29 @@ p.card-text{
   font-weight: 700;
 }
 
+#ingr-list{
+  margin-top: 5px
+}
 
+#ingr-list li{
+  list-style-type: circle;
+    display: list-item;
+    margin-left: 17px;
+    padding-left: 0;
+}
 
 
 .ingr-header-div {
   padding-top: 10px;
   font-weight: 600;
+  text-decoration: underline;
   
 }
 
 .meth-header-div {
   padding-top: 20px;
   font-weight: 600;
+  text-decoration: underline;;
   
 }
 

@@ -119,6 +119,7 @@ function populateAbout(recipeObj){
     ingredientsHeader.text("Ingredients:")
     let ingredientsDiv = $("<ul>");
     ingredientsDiv.addClass("info-div");
+    ingredientsDiv.attr('id', 'ingr-list');
     let item;
     for (let i = 0 ; i < recipeObj.ingredientLines.length ; i ++) {
         item = $("<li>");
