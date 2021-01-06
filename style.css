@@ -166,3 +166,11 @@
   opacity: 1;
   font-weight: 600;
 }
+
+#recipe-modal-header {
+
+  background-color: maroon;
+  color: white;
+
+
+}

@@ -179,9 +179,10 @@ p.card-text{
 } 
 
 .subscript{
-  font-size: xx-small;
-  color: rgb(160, 153, 153);
+  font-size: small;
+  color: #ffffffd9;
 }
+
 
 .info-div-parent{
   display: flex; 
@@ -222,6 +223,7 @@ p.card-text{
 
 .modal .header-div {
   margin-bottom: 10px;
+  margin-top: 10px
 }
 
 .method-div {
@@ -241,4 +243,11 @@ p.card-text{
 #alertspan {
   font-size: small;
 
+}
+
+
+#logo {
+  height: 30px;
+  width: 160px;
+  margin-top: 12px;
 }
