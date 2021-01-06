@@ -96,12 +96,12 @@ function populateAbout(recipeObj){
     row.addClass("row")
     //Photo
     let imageDiv = $("<img>");
-    imageDiv.addClass("recipe-image col s6")
+    imageDiv.addClass("recipe-image col s12 m6 l6 xl6")
     imageDiv.attr("src", recipeObj.image)
     
     //div for the below
     let infoDiv = $("<div>");
-    infoDiv.addClass("info-div-parent col s6")
+    infoDiv.addClass("info-div-parent col s12 m6 l6 xl6")
     //Serves 
     let servesDiv = $("<div>");
     servesDiv.addClass("info-div");
@@ -379,7 +379,7 @@ function searchRecipes (){
             // console.log(response.hits[i].recipe.shareAs);
             // console.log(response.hits[i].recipe.totalTime);
             let recipesList = $('#recipes-list');
-            let divOne      = $('<div>').attr({'class':'col s12 m6 l4 xl3 recipesCol', });
+            let divOne      = $('<div>').attr({'class':'col s12 m4 l3 xl3 recipesCol', });
                 recipesList.append(divOne)
             let divTwo      = ($('<div>').attr({'class':'card small modal-trigger recipesCard','href':'#modal1','data-url': `${response.hits[i].recipe.url}`, 'index': i}));
                 divOne.append(divTwo);
@@ -528,6 +528,7 @@ $('#get-recipe-button').on('click', function(event){
         $('#recipe-list-container').css('display','block')
     }
     let $anchor = $(this);
+    console.log($anchor);
     $('html, body').animate({
       scrollTop: $($anchor.attr('href')).offset().top + "px"
     }, 1500);
@@ -581,6 +582,11 @@ function appendSavedRecipes(){
 //     $('#favourite-recipe-modal').modal();
 // })
 
+// hide left & right arrow button on carousel when viewport width less than 600px
+if($(window).width() < 600){
+    $('.left-button').css('display','none');
+    $('.right-button').css('display','none');
+}
 // add event listener to buttons to animate content left or right
 $('.left-button').click(function(){
     let leftPos = $('.wrapper').scrollLeft();
@@ -653,6 +659,8 @@ $('.dropdown-trigger').dropdown({
         })
     },
 });
+
+
 
 
 
