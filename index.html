@@ -37,16 +37,18 @@
         <div class="nav-wrapper">
           
           <a href="#about-modal" class="brand-logo center"><img id="logo" src="Reci-bits.png" alt="recibits logo"></a>
+          <a href="#" data-target="dropdown1" class="sidenav-trigger dropdown-trigger"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="left hide-on-med-and-down">
             <li><a id="about-modal-button" class="btn modal-trigger" href="#about-modal"> 
               About
             </a></li>
-           
           </ul>
         </div>
       </nav>
 
-      
+      <ul id='dropdown1' class='dropdown-content'>
+        <li><a class="modal-trigger" href="#about-modal" id="dropdown-text">About Reci-Bits</a></li>
+      </ul>
 
 
       <!-- Search bar/ input start-->
@@ -94,7 +96,7 @@
                 <!-- the ingredient input goes here -->
                 
               </div>
-              <a class="btn-small" id="get-recipe-button">Get Recipes</a>
+              <a class="btn-small" id="get-recipe-button" href="#recipe-list-container" >Get Recipes</a>
             </div>
           </div>
           <div class="col s1 m2 l3 xl3"></div>

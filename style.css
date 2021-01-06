@@ -69,11 +69,19 @@
         border: double;
         background-color: maroon;
     }
-    a.btn {
-        border: double;
+    #about-modal-button {
+        border: 2px double white;
+        border-radius: 10px;
         background-color: maroon;
     
     }
+
+    #about-modal-button:hover{
+      color: black;
+      background-color: maroon;
+        box-shadow: 0 0 10px black;
+    }
+
 
 
     a.btn-large {
@@ -185,4 +193,14 @@
   color: white;
 
 
+}
+/* background-color: rgba(75, 160, 41, 0.8); */
+#dropdown1{
+  background-color: maroon;
+  border-radius: 10px;
+}
+
+#dropdown-text{
+  color: white;
+  font-weight: 700;
 }
