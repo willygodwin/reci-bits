@@ -1,9 +1,10 @@
 .bodyContainer {
-    background: url("https://i.postimg.cc/7hCh0wyZ/cooking.png");
+    background-image: url("https://i.postimg.cc/7hCh0wyZ/cooking.png");
     background-position: right bottom;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    padding: 15px;
+    background-size: contain;
+    height: 100vh;
     
     }
       
@@ -29,16 +30,26 @@
     
       #card-panel {
           border: double;
-          width: 450px;
+          width: 100%px;
           height: 100%;
           border-radius: 15px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
           
          
       }
     
-      a.btn-large {
-          display: flex;
+      a.btn-small {
           background-color: maroon;
+          margin-top:10px;
+          border-radius: 10px;
+      }
+
+      a.btn-small:hover{
+        color: black;
+        background-color: maroon;
+        box-shadow: 0 0 10px black;
       }
     
       .container {
@@ -118,18 +129,19 @@
   flex-wrap: wrap;
 }
 .ingredient-list{
-  width:120px;
+  width:max-content;
   padding: 5px;
-  margin: 10px 5px;
+  margin: 5px 5px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgb(145, 145, 145);
-
+  box-shadow: 0 0 5px rgb(145, 145, 145);
 }
 
 .remove-ingredient-button{
   border: none;
+  color: grey;
   background: rgba(255, 255, 255, 0);
   cursor:pointer;
+  padding-left: 20px;
 }
 
 .remove-ingredient-button:hover{
