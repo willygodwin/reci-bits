@@ -632,3 +632,21 @@ function displaySavedRecipes(){
 // call function to display saved recipe on landing page of website
 displaySavedRecipes();
 
+// materializeCSS function for collapsible about reci-bits button on nav bar
+$('.dropdown-trigger').dropdown({
+    constrainWidth : 'false',
+    inDuration : '10',
+    outDuration : '500',
+    onOpenEnd(){
+        $('#dropdown1').css({
+            'width':'max-content',
+            'height':'fit-content',
+            'top':'55px',
+            'left':'0px'
+        })
+    },
+});
+
+
+
+
