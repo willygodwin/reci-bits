@@ -116,8 +116,8 @@
    border: none;
  }
 
- #textarea1:active{
-  border-bottom: 1px solid black;
+ #textarea1:focus{
+  border-bottom: 0px solid black;
 
 }
 

@@ -216,8 +216,8 @@ p.card-text{
 } */
 
 .modal .header-div {
+  padding-top: 10px;
   margin-bottom: 10px;
-  margin-top: 10px;
   background-color: maroon;
 }
 
@@ -241,11 +241,16 @@ p.card-text{
 
 }
 
+.toggle-recipe {
+  padding-bottom: 10px;
+  margin: 0px;
+}
 
 #logo {
-  height: 30px;
-  width: 160px;
-  margin-top: 12px;
+  height: 45px;
+  width: 180px;
+  margin-top: 10px;
+
 }
 #recipe-list-container{
   display: none;
