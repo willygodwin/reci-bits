@@ -527,6 +527,10 @@ $('#get-recipe-button').on('click', function(event){
     if(containerDisplayproperty === 'none'){
         $('#recipe-list-container').css('display','block')
     }
+    let $anchor = $(this);
+    $('html, body').animate({
+      scrollTop: $($anchor.attr('href')).offset().top + "px"
+    }, 1500);
     if($('div[class=card-image]').length !== 0){
         if(containerDisplayproperty === 'none'){
             $('#recipe-list-container').css('display','block')
@@ -547,6 +551,9 @@ $('#get-recipe-button').on('click', function(event){
         searchRecipes();
         displaySavedRecipes();
     }
+    
+    
+    
 })
 
 
