@@ -494,13 +494,21 @@ function searchRecipes (){
 
 function addIngredient(){
     let ul = $('#list-of-ingredients');
+    // filter the input text and remove spaces, commas etc to single comma and split into new array
     let theItems = $('#textarea1').val();
-    let newDiv = $('<div>').attr('class','ingredient-list');
-    let removeButton = $('<button>').attr('class','remove-ingredient-button').text('x');
+        theItems = theItems.replace(/[\s,-/.]+/g, ',')
+    let arrayTheItems = theItems.split(',')
+    // filter the input text and remove spaces, commas etc to single comma and split into new array
+
+    for(j = 0; j < arrayTheItems.length; j++){
+        let newDiv = $('<div>').attr('class','ingredient-list');
+        let removeButton = $('<button>').attr('class','remove-ingredient-button').text('x');
+        
+        newDiv.text(arrayTheItems[j]);
+        newDiv.append(removeButton);
+        ul.append(newDiv);
+    }
     
-    newDiv.text(theItems);
-    newDiv.append(removeButton);
-    ul.append(newDiv);
     $('.remove-ingredient-button').on('click',function(event){
         event.preventDefault();
         // console.log(event);
@@ -659,6 +667,7 @@ $('.dropdown-trigger').dropdown({
         })
     },
 });
+
 
 
 
