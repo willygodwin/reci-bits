@@ -2,6 +2,7 @@ let appID = 'de24e9f5';
 let appKEY = '808b4ecac7df60930d1456576a2afadc';
 let ingredients = "";
 const spoonacularAPI = "59b7c5b4387043649860e827d13b1445"
+let isExisting = false;
 
 let favouriteRecipes = JSON.parse(localStorage.getItem('favouriteRecipes')) || [];
 
@@ -452,10 +453,26 @@ function searchRecipes (){
             let index = $(event.target).attr('index');
             let savedRecipes = response.hits[index].recipe;
             console.log(savedRecipes);
-            favouriteRecipes.push(savedRecipes);
-            localStorage.setItem('favouriteRecipes', JSON.stringify(favouriteRecipes));
-            console.log(favouriteRecipes);
-            displaySavedRecipes();
+            
+            checkExisting(savedRecipes) // first check to see iff the recipe is already existing in the local storage.
+            console.log(isExisting);
+
+            if(!isExisting){
+                favouriteRecipes.push(savedRecipes);
+                localStorage.setItem('favouriteRecipes', JSON.stringify(favouriteRecipes));
+                console.log(favouriteRecipes);
+                displaySavedRecipes();
+            }
+            else {
+                //if recipe is exisitng push to the back of the array 
+                favouriteRecipes = favouriteRecipes.filter(item => item !== savedRecipes);
+                favouriteRecipes.push(savedRecipes);
+                //store array again
+                localStorage.setItem('favouriteRecipes', JSON.stringify(favouriteRecipes));
+                console.log(favouriteRecipes);
+                displaySavedRecipes();
+                isExisting = false;
+            }
 
         })
 
@@ -484,13 +501,30 @@ $('#btnadd').on('click',function(event){
     event.preventDefault();
     console.log(event);
     if($('#textarea1').val()===""){
-        myspan.text("please enter at least one ingredient")
+        myspan.text("Please enter at least one ingredient!")
     }else{
         myspan.text("")
         addIngredient();
         $('#textarea1').val("");
     }
 })
+
+
+$('#textarea1').keydown( function( event ) {
+    if ( event.which === 13 ) {
+        // Do something
+        // Disable sending the related form
+        event.preventDefault();
+        console.log(event);
+        if($('#textarea1').val()===""){
+            myspan.text("Please enter at least one ingredient!")
+        }else{
+            myspan.text("")
+            addIngredient();
+            $('#textarea1').val("");
+        }
+    }
+});
 
 $('#get-recipe-button').on('click', function(event){
     event.preventDefault();
@@ -593,5 +627,21 @@ function displaySavedRecipes(){
 }
 // call function to display saved recipe on landing page of website
 displaySavedRecipes();
+
+
+//Check if the recipe has been added to the favourite recipes 
+function checkExisting(value){
+    let i = 0;
+    while(!isExisting && i < favouriteRecipes.length) {
+        if (value === favouriteRecipes[i]){
+            isExisting = true;
+        }
+        else {
+            isExisting = false; 
+        }
+        i++;
+    console.log("isExsiting: " + isExisting)
+    }
+}
 
 

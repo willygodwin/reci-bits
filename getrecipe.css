@@ -238,3 +238,7 @@ p.card-text{
   cursor: pointer;
 }
 
+#alertspan {
+  font-size: small;
+
+}
