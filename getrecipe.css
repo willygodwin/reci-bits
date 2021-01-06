@@ -262,11 +262,12 @@ p.card-text{
 }
 
 #logo {
-  height: 45px;
-  width: 180px;
+  height: 40px;
+  width: 170px;
   margin-top: 10px;
 
 }
+
 #recipe-list-container{
   display: none;
 }
@@ -280,6 +281,14 @@ p.card-text{
   .container {
     width: 90%;
   }
+
+  #logo {
+    height: 45px;
+    width: 180px;
+    margin-top: 10px;
+  
+  }
+
 }
 @media only screen and (min-width: 993px) {
   .container {
