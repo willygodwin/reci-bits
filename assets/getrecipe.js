@@ -1,13 +1,17 @@
+//Declaration of variables and constants for API calls
 let appID = 'de24e9f5';
 let appKEY = '808b4ecac7df60930d1456576a2afadc';
 let ingredients = "";
 const spoonacularAPI = "59b7c5b4387043649860e827d13b1445"
 let isExisting = false;
 
+//Retrieving saved recipes from the local storage
 let favouriteRecipes = JSON.parse(localStorage.getItem('favouriteRecipes')) || [];
 
-let myspan=$("#alertspan");// the span where the warning message come if the ingredient or the list is empty
+// the span where the warning message come if the ingredient or the list is empty
+let myspan=$("#alertspan");
 
+//Fetch's ingredients from the users input list
 function getIngredientsList(){
     let ingredientsList = $('.ingredient-list');
     let ingredientsArray = [];
@@ -24,15 +28,16 @@ function getIngredientsList(){
     }   
 }
 
+
 function getURL(recipeObj){
     return recipeObj.url
 }
 
-//TODO: Function creating the Modal HTML components dynamically with jQuery
+//Function creating the Modal HTML Header components
 function populateModal(recipeObj){
     let modal = $("#recipe-modal-header")
     modal.text("");
-    //TODO: Standard elements of Modal containing the following
+    
     //Header div
     let headerDiv = $("<div>");
     headerDiv.addClass("header-div");
@@ -88,10 +93,11 @@ function populateModal(recipeObj){
     
 }
 
+//Function creating the Modal HTML about body components
 function populateAbout(recipeObj){
     let modal = $("#recipe-modal-content")
     modal.text("");
-    //TODO: About modal containing the following
+    
     //Div to store info 2 cols 
     let row = $("<div>");
     row.addClass("row")
@@ -146,6 +152,7 @@ function populateAbout(recipeObj){
     modal.append(row);
 }
 
+//Function creating the Modal HTML method/instructions body components
 function populateMethod(recipeObj) {
     let modal = $("#recipe-modal-content")
 
@@ -165,10 +172,11 @@ function populateMethod(recipeObj) {
 
 }
 
+//Function creating the Modal HTML nutritional body components
 function populateNutInfo(recipeObj){
     let modal = $("#recipe-modal-content")
     modal.text("");
-    //TODO: Nutritional info modal containing the following (Total, per serve and % daily)
+    //Nutritional info modal containing the following (Total, per serve and % daily)
     //Creating the table header items
     let tableDiv = $("<table>");
     let tableHeader = $("<thead>");
@@ -365,7 +373,7 @@ function populateNutInfo(recipeObj){
 }
 
 
-
+//Function that calls the API to search for recipe ideas and then another to retrieve info form Spoonacular
 function searchRecipes (){
     getIngredientsList();
     let getRecipesURL = `https://api.edamam.com/search?q=${ingredients}&app_id=${appID}&app_key=${appKEY}&to=12`
@@ -408,7 +416,8 @@ function searchRecipes (){
             // check whether recipes has been saved before and change the star color
                
         }
-    
+        
+        //Click on the card to show Modal pop-up
         $(`.card.small`).on('click',function(event){
             // event.preventDefault();
             // console.log("Event: " + event);
@@ -424,11 +433,13 @@ function searchRecipes (){
 
             let recipeURL = "https://api.spoonacular.com/recipes/extract?apiKey=" + spoonacularAPI + "&url=" + getURL(response.hits[index].recipe);
             
+            //click onto the about tab in modal
             $(".about-recipe").on("click", function(){
                 populateAbout(response.hits[index].recipe);
         
             });
-        
+            
+            //click onto the nutinfo tab in modal
             $(".nutInfo-recipe").on("click", function(){
                 populateNutInfo(response.hits[index].recipe);
             
@@ -449,7 +460,7 @@ function searchRecipes (){
             
                 });
 
-            // $('.modal').modal() //this function will open the modal when click
+            
 
             }).catch(function(error) { 
                 console.log(error)
@@ -459,6 +470,7 @@ function searchRecipes (){
             $('#modal1').modal() //this function will open the modal when click
         });
         
+        //Save/remove the recipe if the star button is clicked
         $('.save-recipe-button').on('click',function(event){
             event.preventDefault();
             event.stopPropagation();
@@ -494,6 +506,7 @@ function searchRecipes (){
     });
 }
 
+//Adds ingredients to the fridge
 function addIngredient(){
     let ul = $('#list-of-ingredients');
     // filter the input text and remove spaces, commas etc to single comma and split into new array
@@ -518,6 +531,7 @@ function addIngredient(){
     })
 }
 
+//Ensures that the user enters atleast one ingredient 
 $('#btnadd').on('click',function(event){
     event.preventDefault();
     console.log(event);
@@ -530,7 +544,7 @@ $('#btnadd').on('click',function(event){
     }
 })
 
-
+//allows user to use enter button to add ingredients
 $('#textarea1').keydown( function( event ) {
     if ( event.which === 13 ) {
         // Do something
@@ -547,6 +561,7 @@ $('#textarea1').keydown( function( event ) {
     }
 });
 
+//searches for recipes when get recipe is clicked
 $('#get-recipe-button').on('click', function(event){
     event.preventDefault();
     console.log(event);
@@ -603,11 +618,6 @@ function appendSavedRecipes(){
     }
 }
 
-// $('#favourite-recipe-modal-button').on('click',function(event){
-//     $('.favourite-recipe').remove();
-//     appendSavedRecipes();
-//     $('#favourite-recipe-modal').modal();
-// })
 
 // hide left & right arrow button on carousel when viewport width less than 600px
 if($(window).width() < 600){
