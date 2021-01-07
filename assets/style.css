@@ -204,3 +204,15 @@
   color: white;
   font-weight: 700;
 }
+
+#about-modal-header {
+  background-color: maroon;
+  padding-bottom: 15px;
+  
+}
+
+
+#about-modal-header h4 {
+  color: white;
+  padding-top: 15px;
+}
