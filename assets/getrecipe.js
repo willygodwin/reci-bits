@@ -486,7 +486,7 @@ function searchRecipes (){
             if(backgroundColor === 'rgba(74, 75, 74, 0.8)'){
                 $(this).css('background-color','rgba(75, 160, 41, 0.8)');
                 console.log(`save recipe index ${$(event.target).attr('index')}`);
-                let index = $(event.target).attr('index');
+                let index = $(event.currentTarget).attr('index');
                 let savedRecipes = response.hits[index].recipe;
                 console.log(savedRecipes);
                 favouriteRecipes.push(savedRecipes);
@@ -496,7 +496,7 @@ function searchRecipes (){
             }
             else if( backgroundColor === 'rgba(75, 160, 41, 0.8)') {
                 $(this).css('background-color','rgba(74, 75, 74, 0.8)');
-                let index = $(event.target).attr('index');
+                let index = $(event.currentTarget).attr('index');
                 let foundIndex = favouriteRecipes.findIndex(function(post){
                     if(post.label == response.hits[index].recipe.label){
                         return true
@@ -513,7 +513,7 @@ function searchRecipes (){
         $('.save-recipe-button').mouseenter(function(event) {
             event.stopPropagation();
             event.preventDefault
-            
+            console.log(response);
             let backgroundColor = $(this).css('background-color');
             if(backgroundColor === 'rgba(74, 75, 74, 0.8)') {
                 $('.hoverSave').text("Add to favourites");
@@ -527,6 +527,7 @@ function searchRecipes (){
         $('.save-recipe-button').mouseleave(function(event) {
             event.stopPropagation();
             event.preventDefault
+            console.log(response);
             // $('.hoverSave').attr({'style':'display: none'});
             console.log("hover out");
             $( this ).find( "span" ).attr({'style':'display: none'});
