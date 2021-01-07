@@ -18,7 +18,8 @@ function getIngredientsList(){
     
     if(ingredientsList.length == 0){
         myspan.text("please enter at least one ingredient")
-    }else{
+    }
+    else{
         myspan.text("")
         for(let j = 0; j < ingredientsList.length; j++){
         let text = ingredientsList[j].childNodes[0].data;
@@ -409,9 +410,16 @@ function searchRecipes (){
                 }
             });
             if(foundIndex !== -1){
-                let saveButton = divTwo.append($('<span>').attr({'class':'far fa-star saveIcon save-recipe-button', 'index':i, 'style':'background-color:rgba(75, 160, 41, 0.8)'}));
-            }else{
-                let saveButton = divTwo.append($('<span>').attr({'class':'far fa-star saveIcon save-recipe-button', 'index':i}));
+                let saveButton = $('<div>').attr({'class':'far fa-star saveIcon save-recipe-button', 'id': 'save-recipe-button', 'index':i, 'style':'background-color:rgba(75, 160, 41, 0.8)'});
+                let hoverInfo = saveButton.append($('<span>').attr({'class':'hoverSave', 'style':'display: none'}).text("Remove from favourites"));
+            
+                divTwo.append(saveButton);
+            }
+            else{
+                let saveButton = $('<div>').attr({'class':'far fa-star saveIcon save-recipe-button','id': 'save-recipe-button', 'index':i});
+                let hoverInfo = saveButton.append($('<span>').attr({'class':'hoverSave', 'style':'display: none'}).text("Add to favourites"));
+
+                divTwo.append(saveButton);
             }
             // check whether recipes has been saved before and change the star color
                
@@ -485,7 +493,8 @@ function searchRecipes (){
                 localStorage.setItem('favouriteRecipes', JSON.stringify(favouriteRecipes));
                 console.log(favouriteRecipes);
                 displaySavedRecipes();
-            }else if( backgroundColor === 'rgba(75, 160, 41, 0.8)') {
+            }
+            else if( backgroundColor === 'rgba(75, 160, 41, 0.8)') {
                 $(this).css('background-color','rgba(74, 75, 74, 0.8)');
                 let index = $(event.target).attr('index');
                 let foundIndex = favouriteRecipes.findIndex(function(post){
@@ -500,6 +509,28 @@ function searchRecipes (){
             
 
         })
+
+        $('.save-recipe-button').mouseenter(function(event) {
+            event.stopPropagation();
+            event.preventDefault
+            
+            let backgroundColor = $(this).css('background-color');
+            if(backgroundColor === 'rgba(74, 75, 74, 0.8)') {
+                $('.hoverSave').text("Add to favourites");
+            }
+            else if( backgroundColor === 'rgba(75, 160, 41, 0.8)') {
+                $('.hoverSave').text("Remove from favourites");  
+            }
+            console.log("hover working")
+            $( this ).find( "span" ).attr({'style':'display: inline-flex'});
+        });
+        $('.save-recipe-button').mouseleave(function(event) {
+            event.stopPropagation();
+            event.preventDefault
+            // $('.hoverSave').attr({'style':'display: none'});
+            console.log("hover out");
+            $( this ).find( "span" ).attr({'style':'display: none'});
+        });
 
     }).catch(function(error){
         console.log(error);
@@ -537,7 +568,8 @@ $('#btnadd').on('click',function(event){
     console.log(event);
     if($('#textarea1').val()===""){
         myspan.text("Please enter at least one ingredient!")
-    }else{
+    }
+    else{
         myspan.text("")
         addIngredient();
         $('#textarea1').val("");
@@ -553,7 +585,8 @@ $('#textarea1').keydown( function( event ) {
         console.log(event);
         if($('#textarea1').val()===""){
             myspan.text("Please enter at least one ingredient!")
-        }else{
+        }
+        else{
             myspan.text("")
             addIngredient();
             $('#textarea1').val("");
@@ -604,6 +637,7 @@ $('#get-recipe-button').on('click', function(event){
 // function to open modal when "About Reci-Bits" button on nav bar is clicked
 $('#about-modal').modal();
 
+//Adds the recipe to saved recipes when star is clicked
 function appendSavedRecipes(){
     for (let i = favouriteRecipes.length; i >= 0; i--){
         if(favouriteRecipes[i] !== undefined){
@@ -696,6 +730,9 @@ $('.dropdown-trigger').dropdown({
         })
     },
 });
+
+
+
 
 
 

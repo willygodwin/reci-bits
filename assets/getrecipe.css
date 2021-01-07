@@ -174,7 +174,7 @@ p.card-text{
 .save-recipe-button:hover{
   border-width: 0;
   /* background-color: white; */
-  color: red;
+  /* color: red; */
   border-radius: 15px 15px 15px 15px;
   font-size: 1.5em;
   text-align: center;
@@ -294,5 +294,9 @@ p.card-text{
   .container {
     width: 90%;
   }
+}
+
+.hoverSave{
+    font-size: xx-small;
 }
 
