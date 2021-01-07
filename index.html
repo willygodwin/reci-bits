@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="getrecipe.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/getrecipe.css">
+    <link rel="stylesheet" href="assets/style.css">
 
     <!-- Import fontawesome for fa save icon -->
     <link
@@ -17,9 +17,7 @@
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous"
     />
-    <!--Import materialize.css-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="getrecipe.css">
+
     
     <script src="https://kit.fontawesome.com/95ecc040e7.js" crossorigin="anonymous"></script>
 
@@ -32,11 +30,11 @@
 
     <div class="bodyContainer"> 
      
-
+      <!-- Nav bar including title w/logo and about link -->
       <nav>
         <div class="nav-wrapper">
           
-          <a href="#about-modal" class="brand-logo center"><img id="logo" src="Reci-bits.png" alt="recibits logo"></a>
+          <a href="#about-modal" class="brand-logo center"><img id="logo" src="assets/Reci-bits.png" alt="recibits logo"></a>
           <a href="#" data-target="dropdown1" class="sidenav-trigger dropdown-trigger"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="left hide-on-med-and-down">
             <li><a id="about-modal-button" class="btn modal-trigger" href="#about-modal"> 
@@ -118,15 +116,27 @@
     <!-- Modal for About Reci-Bits -->
     <div id="about-modal" class="modal">
       <div class="modal-header" id="about-modal-header">
-        About Reci-Bits
+        <h4>About Reci-Bits</h4>
+        
       </div>
       <div class="modal-content" id="about-modal-content">
-        <p>Reci-Bits is a web app to search recipe and nutrition information by using APIs.<br>
-          To use the functionality first you need to type items or ingredients (from your fridge or pantry) one at a time<br>
-          Then when you click on the add button, it will be transferred to another textbox-the searchbox. <br>
-          After this, you need to click on the search button, you will be presented with 12 food (or drink) menu.<br>
-          And when you click on the title or the image of the food (or drink), it will take you to a new page with detail recipe of that item.<br>
-          Thank you for visiting here, and enjoy the food (or drink) <h3>&#128523;</h3> 
+        <p style="text-align:left;">Reci-Bits is a web app designed to search recipe and nutrition information using API's.<br>
+          How to use:
+        </p>
+          <ul style="text-align:left; margin-left:20px;" >
+            <li style="list-style-type: circle;">First type ingredients (from your fridge or pantry) into the "What is in your Fridge?" box.</li>
+            <li style="list-style-type: circle;">Then when you click on the add button (or enter), it will be transferred to another textbox; the searchbox.</li>
+            <li style="list-style-type: circle;">After you have added all the ingredients, you need to click on the "Get Recipes" button, you will then be presented with 12 food (or drink) menu.</li>
+            <li style="list-style-type: circle;">When you click on the title or the image of the food (or drink), it will take you to a new page with a detailed recipe of that item.</li>
+          </ul>
+          <p style="text-align:left;">
+           <br>
+          Please note that searches are optimised with less than 5 ingredients. 
+          <br>
+          <br>
+          Thank you for visiting Reci-Bits, we hope you enjoy the food (or drink)!
+          <br>
+          <h3>&#128523;</h3> 
           </p>
       </div>
       <div class="modal-footer">
@@ -161,7 +171,7 @@
     
     <!-- <script src="script.js"></script> -->
     
-    <script src="getrecipe.js"></script>
+    <script src="assets/getrecipe.js"></script>
 
     
   </body>
