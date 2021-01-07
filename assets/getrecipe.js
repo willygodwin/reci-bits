@@ -510,28 +510,30 @@ function searchRecipes (){
 
         })
 
-        $('.save-recipe-button').mouseenter(function(event) {
-            event.stopPropagation();
-            event.preventDefault
-            console.log(response);
-            let backgroundColor = $(this).css('background-color');
-            if(backgroundColor === 'rgba(74, 75, 74, 0.8)') {
-                $('.hoverSave').text("Add to favourites");
-            }
-            else if( backgroundColor === 'rgba(75, 160, 41, 0.8)') {
-                $('.hoverSave').text("Remove from favourites");  
-            }
-            console.log("hover working")
-            $( this ).find( "span" ).attr({'style':'display: inline-flex'});
-        });
-        $('.save-recipe-button').mouseleave(function(event) {
-            event.stopPropagation();
-            event.preventDefault
-            console.log(response);
-            // $('.hoverSave').attr({'style':'display: none'});
-            console.log("hover out");
-            $( this ).find( "span" ).attr({'style':'display: none'});
-        });
+        if($(window).width() > 992){
+            $('.save-recipe-button').mouseenter(function(event) {
+                event.stopPropagation();
+                event.preventDefault
+                console.log(response);
+                let backgroundColor = $(this).css('background-color');
+                if(backgroundColor === 'rgba(74, 75, 74, 0.8)') {
+                    $('.hoverSave').text("Add to favourites");
+                }
+                else if( backgroundColor === 'rgba(75, 160, 41, 0.8)') {
+                    $('.hoverSave').text("Remove from favourites");  
+                }
+                console.log("hover working")
+                $( this ).find( "span" ).attr({'style':'display: inline-flex'});
+            });
+            $('.save-recipe-button').mouseleave(function(event) {
+                event.stopPropagation();
+                event.preventDefault
+                console.log(response);
+                // $('.hoverSave').attr({'style':'display: none'});
+                console.log("hover out");
+                $( this ).find( "span" ).attr({'style':'display: none'});
+            });
+        }
 
     }).catch(function(error){
         console.log(error);
