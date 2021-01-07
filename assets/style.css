@@ -216,3 +216,19 @@
   color: white;
   padding-top: 15px;
 }
+
+#tophat, #lowerhat, #feet, #face, #hair, #body {
+  animation: hat 1s ease-in-out infinite alternate;
+ }
+ 
+ @keyframes hat {
+     from {
+         transform: rotateX(0deg);
+ 
+     }
+     to {
+      transform: rotateX(20deg); 
+     }
+ }
+ 
+ 
