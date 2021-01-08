@@ -3,13 +3,17 @@ let appID = 'de24e9f5';
 let appKEY = '808b4ecac7df60930d1456576a2afadc';
 let ingredients = "";
 const spoonacularAPI = "59b7c5b4387043649860e827d13b1445"
-let isExisting = false;
+let ingredientArr = [];
 
 //Retrieving saved recipes from the local storage
 let favouriteRecipes = JSON.parse(localStorage.getItem('favouriteRecipes')) || [];
 
 // the span where the warning message come if the ingredient or the list is empty
 let myspan=$("#alertspan");
+
+
+
+console.log(ingredientArr)
 
 //Fetch's ingredients from the users input list
 function getIngredientsList(){
@@ -579,6 +583,30 @@ $('#btnadd').on('click',function(event){
     }
 })
 
+$('#textarea1').keyup( function( event ) {
+    console.log(event.target.value);
+    let userData = event.target.value; //user entered data
+    let emptyArr = [];
+
+    if(userData) {
+        emptyArr = suggestions.filter((data)=>{
+            return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase());
+        });
+        
+        emptyArr = emptyArr.map((data)=>{
+            return data = "<li>" + data  + '</li>'
+
+        });
+        console.log(emptyArr)
+    } else {
+
+    }
+    showSuggestions(emptyArr)
+
+
+        
+    });
+    
 //allows user to use enter button to add ingredients
 $('#textarea1').keydown( function( event ) {
     if ( event.which === 13 ) {
@@ -596,6 +624,19 @@ $('#textarea1').keydown( function( event ) {
         }
     }
 });
+
+function showSuggestions(list){
+    let suggestBox = $(".autocom-box")
+    let listData;
+    if (!list.length) {
+
+
+    } else {
+
+        listData = list.join('')
+    }
+    suggestBox.html(listData);
+}
 
 //searches for recipes when get recipe is clicked
 $('#get-recipe-button').on('click', function(event){

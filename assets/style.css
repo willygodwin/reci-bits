@@ -105,9 +105,11 @@
 
 
  .input-field.col{
+   position: relative;
    width: 70%;
    padding: 0;
    display: flex;
+   flex-direction: column;
    justify-content: space-evenly;
    background: rgba(207, 207, 207, 0.8);
    border-radius: 15px;
@@ -117,11 +119,20 @@
 
  #btnadd{
    background-color: rgba(255, 255, 255, 0);
+   height: 40px;
+   width: 40px;
+   line-height: 40px;
    border: none;
+   position: absolute;
+   top: 0;
+   right: 0;
+   cursor: pointer;
  }
 
  #textarea1{
    border: none;
+   display: flex;
+   flex-direction: column;
  }
 
  #textarea1:focus{
@@ -129,6 +140,24 @@
 
 }
 
+.autocom-box{
+  padding: 10px, 8px;
+  max-height: 280px;
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+}
+.autocom-box li {
+  list-style: none;
+  padding: 8px, 12px;
+  width: 100%;
+  cursor: default;
+  border-radius: 3px;
+  display: none;
+ }
+ .autocom-box li:hover {
+  background: white;
+ }
 
 #list-of-ingredients{
   display: flex;
@@ -220,6 +249,8 @@
 #tophat, #lowerhat, #feet, #face, #hair, #body {
   animation: hat 1s ease-in-out infinite alternate;
  }
+
+ 
  
  @keyframes hat {
      from {
