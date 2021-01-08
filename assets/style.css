@@ -129,24 +129,33 @@
    cursor: pointer;
  }
 
- #textarea1{
+ .materialize-textarea{
    border: none;
    display: flex;
    flex-direction: column;
  }
 
- #textarea1:focus{
+ .materialize-textarea:focus{
   border-bottom: 0px solid black;
 
 }
 
-.autocom-box{
-  padding: 10px, 8px;
+.materialize-textarea .autocom-box{
+  padding: 0px;
   max-height: 280px;
   overflow-y: auto;
   opacity: 0;
   pointer-events: none;
 }
+
+.materialize-textarea.active .autocom-box{
+  padding: 10px, 8px;
+  max-height: 280px;
+  overflow-y: auto;
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .autocom-box li {
   list-style: none;
   padding: 8px, 12px;
@@ -155,6 +164,11 @@
   border-radius: 3px;
   display: none;
  }
+ 
+.materialize-textarea.active .autocom-box li{
+  display: block;
+}
+ 
  .autocom-box li:hover {
   background: white;
  }
@@ -210,7 +224,7 @@
   background-color: rgba(113, 12, 11, 0.5);
 }
 
-#textarea1::placeholder{
+.materialize-textarea::placeholder{
   color:rgb(36, 35, 35);
   opacity: 1;
   font-weight: 600;

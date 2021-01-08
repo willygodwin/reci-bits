@@ -598,10 +598,12 @@ $('#textarea1').keyup( function( event ) {
 
         });
         console.log(emptyArr)
+        $('#textarea1').addClass("active");
+
     } else {
 
     }
-    showSuggestions(emptyArr)
+    showSuggestions(emptyArr);
 
 
         
