@@ -146,6 +146,7 @@
   overflow-y: auto;
   opacity: 0;
   pointer-events: none;
+  display: none;
 }
 
 .autocom-box.activeingredients{
@@ -155,7 +156,7 @@
   opacity: 1;
   pointer-events: auto;
   display: block;
-  background-color: white;
+  
 }
 
 .autocom-box li {
