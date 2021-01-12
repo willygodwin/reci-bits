@@ -140,7 +140,7 @@
 
 }
 
-.materialize-textarea .autocom-box{
+.autocom-box{
   padding: 0px;
   max-height: 280px;
   overflow-y: auto;
@@ -148,24 +148,26 @@
   pointer-events: none;
 }
 
-.materialize-textarea.active .autocom-box{
+.autocom-box.activeingredients{
   padding: 10px, 8px;
-  max-height: 280px;
+  max-height: 5rem;
   overflow-y: auto;
   opacity: 1;
   pointer-events: auto;
+  display: block;
+  background-color: white;
 }
 
 .autocom-box li {
   list-style: none;
-  padding: 8px, 12px;
+  padding: 0px, 0px;
   width: 100%;
   cursor: default;
   border-radius: 3px;
   display: none;
  }
  
-.materialize-textarea.active .autocom-box li{
+.autocom-box.activeingredients li{
   display: block;
 }
  

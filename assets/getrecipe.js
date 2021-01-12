@@ -598,7 +598,7 @@ $('#textarea1').keyup( function( event ) {
 
         });
         console.log(emptyArr)
-        $('#textarea1').addClass("active");
+        $('.autocom-box').addClass("activeingredients");
 
     } else {
 
