@@ -601,13 +601,29 @@ $('#textarea1').keyup( function( event ) {
         $('.autocom-box').addClass("activeingredients");
 
     } else {
+        $('.autocom-box').remove("activeingredients");
+        // hideSuggestions(emptyArr);
 
     }
     showSuggestions(emptyArr);
-
-
         
     });
+
+$('.autocom-box ').on("click", function(event){
+    event.preventDefault();
+    event.stopPropagation();
+
+    console.log(event.target.textContent)
+    let value = event.target.textContent;
+
+    $('#textarea1').val(value);
+    addIngredient();
+    $('#textarea1').val("");
+    // hideSuggestions([]);
+    $('.autocom-box').remove("activeingredients");
+
+
+});
     
 //allows user to use enter button to add ingredients
 $('#textarea1').keydown( function( event ) {
@@ -631,6 +647,7 @@ function showSuggestions(list){
     let suggestBox = $(".autocom-box")
     let listData;
     if (!list.length) {
+        listData = "<li>" + $('#textarea1').val() + "<li>"
 
 
     } else {
@@ -638,6 +655,18 @@ function showSuggestions(list){
         listData = list.join('')
     }
     suggestBox.html(listData);
+}
+
+function hideSuggestions(list) {
+    let suggestBox = $(".autocom-box")
+    if (list.length === 0) {
+        suggestBox.html("")
+        $('.autocom-box').remove("activeingredients");
+    }
+    else{
+
+    }
+
 }
 
 //searches for recipes when get recipe is clicked
